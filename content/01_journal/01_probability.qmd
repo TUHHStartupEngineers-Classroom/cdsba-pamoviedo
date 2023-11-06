@@ -85,7 +85,7 @@ code
 Add a language to syntax highlight code blocks:
 
 ```{r}
-1 + 1
+1 + 2
 ```
 
 ```{r}
