@@ -6,16 +6,26 @@ author: "Pamela Oviedo"
 
 ![](assets/logo/TIE_logo.svg){width=80% fig-align="center"}
 
-This is a template example for lab journaling. Students in the data science courses at the Institute of Entrepreneurship will use this template to learn R for business analytics. Students can replace this text as they wish.
+This is the Causal Data Science Journal.
 
-## How to use
+# Contents:  
 
-1. Accept the assignment and get your own github repo.
+## Fundamentals  
 
-2. Blog/journal what you are doing in R, by editing the `.qmd` files. 
+###  01. Probability Theory
 
-3. See the links page for lots of helpful links on learning R.
+###  02. Statistical Concepts
 
-4. Change everything to make it your own.
+###  03. Regression and Statistical Inference  
 
-5. Make sure to render you website every time before you want to upload changes.
+###  04. Causality
+
+###  05. Directed Acylic Graphs  
+
+## Toolbox  
+
+###  06. Randomized Controll Trials  
+###  07. Matching and Subclassification  
+###  08. Difference-in-Differences  
+###  09. Instrumental Variables  
+###  10. Regression Discontinuity

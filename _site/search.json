@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "My Lab Journal",
     "section": "",
-    "text": "This is a template example for lab journaling. Students in the data science courses at the Institute of Entrepreneurship will use this template to learn R for business analytics. Students can replace this text as they wish."
+    "text": "This is the Causal Data Science Journal."
   },
   {
     "objectID": "index.html#how-to-use",
@@ -110,5 +110,26 @@
     "title": "Probability Theory",
     "section": "3.1 Solution:",
     "text": "3.1 Solution:\n\n\\(P(\\overline A|B)=\\frac{0.01*0.96}{(0.01*0.96)+(0.97*0.04)}= 0.1983=19.83\\)%\n\n\\(P(A|B)= \\frac{0.97*0.04}{(0.97*0.04)+(0.01*0.96)}=0.8017=80.17\\)%\n\nThese results show that in case the alarm is triggered, there is a possibility of about 19.83 % that the product is flawless and a probability of 80.17% that the product is faulty."
+  },
+  {
+    "objectID": "index.html#contents",
+    "href": "index.html#contents",
+    "title": "My Lab Journal",
+    "section": "Contents:",
+    "text": "Contents:"
+  },
+  {
+    "objectID": "index.html#fundamentals",
+    "href": "index.html#fundamentals",
+    "title": "My Lab Journal",
+    "section": "Fundamentals",
+    "text": "Fundamentals\n\n01. Probability Theory\n\n\n02. Statistical Concepts\n\n\n03. Regression and Statistical Inference\n\n\n04. Causality\n\n\n05. Directed Acylic Graphs"
+  },
+  {
+    "objectID": "index.html#toolbox",
+    "href": "index.html#toolbox",
+    "title": "My Lab Journal",
+    "section": "Toolbox",
+    "text": "Toolbox\n\n06. Randomized Controll Trials\n\n\n07. Matching and Subclassification\n\n\n08. Difference-in-Differences\n\n\n09. Instrumental Variables\n\n\n10. Regression Discontinuity"
   }
 ]
