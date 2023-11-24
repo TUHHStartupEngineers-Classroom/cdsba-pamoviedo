@@ -2,96 +2,77 @@
 title: "Probability Theory"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
 
-This is a `.qmd` file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a \# in front of your text, it will create a top level-header.
+#  Assignment 1 
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+With the following Tree Diagram the four probabilities will be shown as well as the sum of the 4.
 
-# Text Formatting
+![Probability Tree](../../assets/img/Tree Diagram.png)  
 
-*italics* and **bold**
+##  Solution:  
 
-superscript^2^ / subscript~2~
+* $P(T\cap S) = 0.3*0.2 = 0.06$  
 
-~~strikethrough~~
+* $P(\overline{T}\cap S) = 0.3*0.8 = 0.24$  
 
-`verbatim code`
+* $P(T\cap\overline{S}) = 0.7*0.6 = 0.42$  
 
-> Blockquote
+* $P(\overline{T}\cap\overline{S}) = 0.7*0.4 = 0.28$  
 
-# Headings
+#  Assignment 2  
 
-## Header 2
-### Header 3
-#### Header 4
-##### Header 5
-###### Header 6
+Using the Venn diagram above, answer the following questions.
+![Venn Diagram](../../assets/img/Venn Diagram.png)  
 
-# Links & Images
+##  Solution:  
 
-<https://quarto.org>
+*  What is the percentage of customers using all three devices?  
+0.5%  
 
-[Quarto](https://quarto.org)
+* What is the percentage of customers using at least two devices?  
+19.9%  
 
-![Caption](../../assets/img/elephant.png)
+* What is the percentage of customers using only one device?  
+80.1%  
 
-[![Caption](../../assets/img/elephant.png)](https://quarto.org)
+#  Assignment 3 
 
-[![Caption](../../assets/img/elephant.png)](https://quarto.org "An elephant")
+Bayes Theorem:  
 
+*  Bayes theorem expresses a conditional probability, exemplary the likelihood of occurring conditioned on having happened before.  
 
-# Lists
+Bayes Theorem Formula:  
 
-* unordered list
-    + sub-item 1
-    + sub-item 2
-        - sub-sub-item 1
-        
-*   item 2
+$P(A \mid B)=\frac{P(B| A)* P(A)}{P(B|A)*P(A)+P(B|\overline A)*P(\overline A)} )$   
 
-    Continued (indent 4 spaces)
-    
-    
-1. ordered list
-2. item 2
-    i) sub-item 1
-         A.  sub-sub-item 1
-         
-(@)  A list whose numbering
+  
+  
+**Application:**    
 
-continues after
+Imagine, you are quality assurance manager and you want to buy a new tool that automates part of the quality assurance. If the tool finds a product it considers faulty, an alarm is triggered. The seller of the tool states that if a product is faulty, the tool is 97% reliable and if the product is flawless, the test is 99% reliable. Also, from your past experience you know that 4% of your products come out with flaws. To assess the usefulness of the tool in practice you want to know the following probabilities:  
 
-(@)  an interruption
+1.  What is the probability that when the alarm is triggered the product is found to be flawless?  
+2. What is the probability that when the alarm is triggered the product is found to have flaws?  
 
-# Tables
+*  $A:$ Product is Faulty  
+*  $\overline A:$ Product is flawless  
+*  $B:$ Alarm is triggered  
+*  $\overline B:$ No alarm  
 
-| Right | Left | Default | Center |
-|------:|:-----|---------|:------:|
-|   12  |  12  |    12   |    12  |
-|  123  |  123 |   123   |   123  |
-|    1  |    1 |     1   |     1  |
+We know:
 
-# Source Codes
+*  $P(B|A)= 0.97$ 
+*  $P(B|\overline A)= 0.01$ 
+*  $P(A)= 0.04$
 
-Use ``` to delimit blocks of source code:
+Compute:  
 
-```
-code
-```
+*  $P(\overline A|B)$  
+*  $P(A|B)$  
 
-Add a language to syntax highlight code blocks:
+## Solution:  
 
-```{r}
-1 + 2
-```
+*  $P(\overline A|B)=\frac{0.01*0.96}{(0.01*0.96)+(0.97*0.04)}= 0.1983=19.83$%  
+*  $P(A|B)= \frac{0.97*0.04}{(0.97*0.04)+(0.01*0.96)}=0.8017=80.17$%  
 
-```{r}
-cars
-```
-
-```{r}
-plot(cars)
-```
+*These results show that in case the alarm is triggered, there is a possibility of about 19.83 % that the product is flawless and a probability of 80.17% that the product is faulty.*

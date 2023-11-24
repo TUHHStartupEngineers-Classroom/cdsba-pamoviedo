@@ -67,7 +67,7 @@
     "href": "content/01_journal/01_probability.html",
     "title": "Probability Theory",
     "section": "",
-    "text": "Note\n\n\n\nYou can delete everything in here and start fresh.\nThis is a .qmd file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a # in front of your text, it will create a top level-header.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "With the following Tree Diagram the four probabilities will be shown as well as the sum of the 4.\n\n\n\nProbability Tree\n\n\n\n\n\n\\(P(T\\cap S) = 0.3*0.2 = 0.06\\)\n\\(P(\\overline{T}\\cap S) = 0.3*0.8 = 0.24\\)\n\\(P(T\\cap\\overline{S}) = 0.7*0.6 = 0.42\\)\n\\(P(\\overline{T}\\cap\\overline{S}) = 0.7*0.4 = 0.28\\)"
   },
   {
     "objectID": "content/01_journal/01_probability.html#header-2",
@@ -89,5 +89,26 @@
     "title": "Regression Discontinuity",
     "section": "",
     "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
+  },
+  {
+    "objectID": "content/01_journal/01_probability.html#solution",
+    "href": "content/01_journal/01_probability.html#solution",
+    "title": "Probability Theory",
+    "section": "",
+    "text": "\\(P(T\\cap S) = 0.3*0.2 = 0.06\\)\n\\(P(\\overline{T}\\cap S) = 0.3*0.8 = 0.24\\)\n\\(P(T\\cap\\overline{S}) = 0.7*0.6 = 0.42\\)\n\\(P(\\overline{T}\\cap\\overline{S}) = 0.7*0.4 = 0.28\\)"
+  },
+  {
+    "objectID": "content/01_journal/01_probability.html#solution-1",
+    "href": "content/01_journal/01_probability.html#solution-1",
+    "title": "Probability Theory",
+    "section": "2.1 Solution:",
+    "text": "2.1 Solution:\n\nWhat is the percentage of customers using all three devices?\n0.5%\nWhat is the percentage of customers using at least two devices?\n19.9%\nWhat is the percentage of customers using only one device?\n80.1%"
+  },
+  {
+    "objectID": "content/01_journal/01_probability.html#solution-2",
+    "href": "content/01_journal/01_probability.html#solution-2",
+    "title": "Probability Theory",
+    "section": "3.1 Solution:",
+    "text": "3.1 Solution:\n\n\\(P(\\overline A|B)=\\frac{0.01*0.96}{(0.01*0.96)+(0.97*0.04)}= 0.1983=19.83\\)%\n\n\\(P(A|B)= \\frac{0.97*0.04}{(0.97*0.04)+(0.01*0.96)}=0.8017=80.17\\)%\n\nThese results show that in case the alarm is triggered, there is a possibility of about 19.83 % that the product is flawless and a probability of 80.17% that the product is faulty."
   }
 ]
