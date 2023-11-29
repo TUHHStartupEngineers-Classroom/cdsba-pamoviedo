@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.450">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Oliver Mork">
-
+<meta name="author" content="Pamela Oviedo">
 <title>MyLabJournal - Statistical Concepts</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,8 +18,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -42,8 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -62,17 +91,13 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
@@ -84,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -92,8 +117,8 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="../../content/01_journal/01_probability.html" rel="" target="">
  <span class="dropdown-text">01 Probability Theory</span></a>
   </li>  
@@ -134,27 +159,34 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">10 Regression Discontinuity</span></a>
   </li>  
     </ul>
-  </li>
+</li>
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-navbar-tools ms-auto">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li>
+<a href="#assignments" id="toc-assignments" class="nav-link active" data-scroll-target="#assignments"><span class="header-section-number">1</span> Assignments</a>
+  <ul class="collapse">
+<li><a href="#expected-value-variance-and-standard-deviation" id="toc-expected-value-variance-and-standard-deviation" class="nav-link" data-scroll-target="#expected-value-variance-and-standard-deviation"><span class="header-section-number">1.1</span> Expected value, variance and standard deviation</a></li>
+  <li><a href="#does-it-make-sense-to-compare-standard-deviations" id="toc-does-it-make-sense-to-compare-standard-deviations" class="nav-link" data-scroll-target="#does-it-make-sense-to-compare-standard-deviations"><span class="header-section-number">1.2</span> Does it make sense to compare standard deviations?</a></li>
+  <li><a href="#compute-covariance-and-correlation" id="toc-compute-covariance-and-correlation" class="nav-link" data-scroll-target="#compute-covariance-and-correlation"><span class="header-section-number">1.3</span> Compute covariance and correlation</a></li>
+  <li><a href="#what-measure-is-easier-to-interpret" id="toc-what-measure-is-easier-to-interpret" class="nav-link" data-scroll-target="#what-measure-is-easier-to-interpret"><span class="header-section-number">1.4</span> What measure is easier to interpret?</a></li>
+  <li><a href="#compute-the-conditional-expected-value-for" id="toc-compute-the-conditional-expected-value-for" class="nav-link" data-scroll-target="#compute-the-conditional-expected-value-for"><span class="header-section-number">1.5</span> Compute the conditional expected value for</a></li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Statistical Concepts</h1>
 </div>
 
@@ -165,7 +197,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Oliver Mork </p>
+             <p>Pamela Oviedo </p>
           </div>
   </div>
     
@@ -174,26 +206,125 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
+</header><section id="assignments" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> Assignments</h1>
+<section id="expected-value-variance-and-standard-deviation" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="expected-value-variance-and-standard-deviation">
+<span class="header-section-number">1.1</span> Expected value, variance and standard deviation</h2>
+<div class="cell" data-hash="02_statistics_cache/html/unnamed-chunk-1_c6d30d797945f1970e26a31b805b53b9">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>random_vars <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"D:/GitHub/cdsba-pamoviedo/Causal_Data_Science_Data/random_vars.rds"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># Compute the expected value, variance and standard deviation for variable age</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>mean_age <span class="ot">&lt;-</span> <span class="fu">mean</span>(random_vars<span class="sc">$</span>age)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>mean_age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 33.471</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>var_age <span class="ot">&lt;-</span> <span class="fu">var</span>(random_vars<span class="sc">$</span>age)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>var_age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 340.6078</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>sd_age <span class="ot">&lt;-</span> <span class="fu">sd</span>(random_vars<span class="sc">$</span>age)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>sd_age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 18.45556</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#Compute the expected value, variance and standard deviation for variable income</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>mean_income <span class="ot">&lt;-</span> <span class="fu">mean</span>(random_vars<span class="sc">$</span>income)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>mean_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 3510.731</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>var_income <span class="ot">&lt;-</span> <span class="fu">var</span>(random_vars<span class="sc">$</span>income)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>var_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 8625646</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>sd_income <span class="ot">&lt;-</span> <span class="fu">sd</span>(random_vars<span class="sc">$</span>income)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>sd_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 2936.945</code></pre>
+</div>
+</div>
+<section id="results" class="level3"><h3 class="anchored" data-anchor-id="results">Results</h3>
+<ul>
+<li><p>Age expected value: 33.471<br></p></li>
+<li><p>Age variance: 340.6078<br></p></li>
+<li><p>Age standard deviation: 18.45556</p></li>
+<li><p>Income expected value: 3510.731<br></p></li>
+<li><p>Income variance: 8625646</p></li>
+<li><p>Income standard deviation: 2936.945</p></li>
+</ul></section></section><section id="does-it-make-sense-to-compare-standard-deviations" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="does-it-make-sense-to-compare-standard-deviations">
+<span class="header-section-number">1.2</span> Does it make sense to compare standard deviations?</h2>
+<ul>
+<li>It doesn’t make sense to compare them since they are individual data sets and the comparison would give us no insight.</li>
+</ul></section><section id="compute-covariance-and-correlation" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="compute-covariance-and-correlation">
+<span class="header-section-number">1.3</span> Compute covariance and correlation</h2>
+<div class="cell" data-hash="02_statistics_cache/html/unnamed-chunk-2_e46b308d9a5e349a466b6bc96583e558">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#Compute the covariance and correlation between both variables</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>covariance <span class="ot">&lt;-</span> <span class="fu">cov</span>(random_vars<span class="sc">$</span>age,random_vars<span class="sc">$</span>income)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>covariance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 29700.15</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(random_vars<span class="sc">$</span>age,random_vars<span class="sc">$</span>income)</span>
+<span id="cb15-2"><a href="#cb15-2"></a>correlation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 0.5479432</code></pre>
+</div>
+</div>
+<section id="results-1" class="level3"><h3 class="anchored" data-anchor-id="results-1">Results</h3>
+<ul>
+<li>Covariance: 29700.15<br>
+</li>
+<li>Correlation: 0.5479432</li>
+</ul></section></section><section id="what-measure-is-easier-to-interpret" class="level2" data-number="1.4"><h2 data-number="1.4" class="anchored" data-anchor-id="what-measure-is-easier-to-interpret">
+<span class="header-section-number">1.4</span> What measure is easier to interpret?</h2>
+<ul>
+<li><p>Covariance indicates the direction of the linear relationship between variables but it doesn’t provide a standardized measure.<br></p></li>
+<li><p>Correlation is a standardized measure that ranges between -1 and 1. With -1 indicating a perfect negative linear relationship, 0 indicating no linear relationship and 1 indicating a perfect positive linear relationship.</p></li>
+<li><p>With the description above, it is easier to interpret the correlation since the values are fixed and we know that the 0.5479 represents a strong linear relation because it is closer to 1. The covariance value since it has no standardized measure, we are unable to know if it is representing a high or low value.</p></li>
+</ul></section><section id="compute-the-conditional-expected-value-for" class="level2" data-number="1.5"><h2 data-number="1.5" class="anchored" data-anchor-id="compute-the-conditional-expected-value-for">
+<span class="header-section-number">1.5</span> Compute the conditional expected value for</h2>
+<ol type="1">
+<li>
+<span class="math inline">\(E[income|age&lt;=18]\)</span><br>
+</li>
+<li><span class="math inline">\(E[income|age\in[18,65)]\)</span></li>
+<li><span class="math inline">\(E[income|age&gt;=65]\)</span></li>
+</ol>
+<div class="cell" data-hash="02_statistics_cache/html/unnamed-chunk-3_803a3286352e248b920b1e27d60a45ff">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>cev1<span class="ot">&lt;-</span> <span class="fu">filter</span>(random_vars,age<span class="sc">&lt;=</span><span class="dv">18</span>)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>mean_cev1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(cev1<span class="sc">$</span>income)</span>
+<span id="cb17-3"><a href="#cb17-3"></a>mean_cev1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 389.6074</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>cev2<span class="ot">&lt;-</span> <span class="fu">filter</span>(random_vars,age<span class="sc">&gt;=</span><span class="dv">18</span><span class="sc">&amp;</span>age<span class="sc">&lt;</span><span class="dv">65</span>)</span>
+<span id="cb19-2"><a href="#cb19-2"></a>mean_cev2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(cev2<span class="sc">$</span>income)</span>
+<span id="cb19-3"><a href="#cb19-3"></a>mean_cev2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 4685.734</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>cev3<span class="ot">&lt;-</span> <span class="fu">filter</span>(random_vars,age<span class="sc">&gt;=</span><span class="dv">65</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a>mean_cev3<span class="ot">&lt;-</span> <span class="fu">mean</span>(cev3<span class="sc">$</span>income)</span>
+<span id="cb21-3"><a href="#cb21-3"></a>mean_cev3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 1777.237</code></pre>
+</div>
+</div>
+<section id="results-2" class="level3"><h3 class="anchored" data-anchor-id="results-2">Results</h3>
+<ol type="1">
+<li>
+<span class="math inline">\(E[income|age&lt;=18]= 389.6074\)</span><br>
+</li>
+<li><span class="math inline">\(E[income|age\in[18,65)]=4685.734\)</span></li>
+<li><span class="math inline">\(E[income|age&gt;=65]=1777.237\)</span></li>
+</ol>
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
-</div>
-</div>
 
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

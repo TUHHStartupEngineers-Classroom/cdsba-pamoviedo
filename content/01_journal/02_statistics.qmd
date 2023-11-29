@@ -2,6 +2,89 @@
 title: "Statistical Concepts"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+# Assignments  
+
+## Expected value, variance and standard deviation
+
+```{r}
+
+library(tidyverse)
+random_vars <- readRDS("D:/GitHub/cdsba-pamoviedo/Causal_Data_Science_Data/random_vars.rds")
+
+# Compute the expected value, variance and standard deviation for variable age
+mean_age <- mean(random_vars$age)
+mean_age
+var_age <- var(random_vars$age)
+var_age
+sd_age <- sd(random_vars$age)
+sd_age
+
+#Compute the expected value, variance and standard deviation for variable income
+mean_income <- mean(random_vars$income)
+mean_income
+var_income <- var(random_vars$income)
+var_income
+sd_income <- sd(random_vars$income)
+sd_income
+
+```
+
+### Results 
+*  Age expected value: 33.471  
+*  Age variance: 340.6078  
+*  Age standard deviation: 18.45556  
+
+*  Income expected value: 3510.731  
+*  Income variance: 8625646
+*  Income standard deviation: 2936.945
+
+## Does it make sense to compare standard deviations?  
+
+*  It doesn't make sense to compare them since they are individual data sets and the comparison would give us no insight.
+
+## Compute covariance and correlation 
+
+```{r}
+
+#Compute the covariance and correlation between both variables
+covariance <- cov(random_vars$age,random_vars$income)
+covariance
+correlation <- cor(random_vars$age,random_vars$income)
+correlation
+
+```
+
+### Results
+*  Covariance: 29700.15  
+*  Correlation: 0.5479432
+
+## What measure is easier to interpret?  
+*  Covariance indicates the direction of the linear relationship between variables but it doesn't provide a standardized measure.  
+*  Correlation is a standardized measure that ranges between -1 and 1. With -1 indicating a perfect negative linear relationship, 0 indicating no linear relationship and 1 indicating a perfect positive linear relationship.  
+
+*  With the description above, it is easier to interpret the correlation since the values are fixed and we know that the 0.5479 represents a strong linear relation because it is closer to 1. The covariance value since it has no standardized measure, we are unable to know if it is representing a high or low value.  
+
+## Compute the conditional expected value for 
+
+1.  $E[income|age<=18]$  
+2.  $E[income|age\in[18,65)]$
+3.  $E[income|age>=65]$  
+
+```{r}
+cev1<- filter(random_vars,age<=18)
+mean_cev1 <- mean(cev1$income)
+mean_cev1
+cev2<- filter(random_vars,age>=18&age<65)
+mean_cev2 <- mean(cev2$income)
+mean_cev2
+cev3<- filter(random_vars,age>=65)
+mean_cev3<- mean(cev3$income)
+mean_cev3
+```
+
+### Results 
+
+1.  $E[income|age<=18]= 389.6074$  
+2.  $E[income|age\in[18,65)]=4685.734$
+3.  $E[income|age>=65]=1777.237$  
+
