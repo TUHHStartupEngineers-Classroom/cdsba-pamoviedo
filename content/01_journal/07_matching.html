@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.450">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Oliver Mork">
-
+<meta name="author" content="Pamela Oviedo">
 <title>MyLabJournal - Matching and Subclassification</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,8 +18,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -43,7 +73,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -62,17 +94,13 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
@@ -84,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -92,8 +120,8 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="../../content/01_journal/01_probability.html" rel="" target="">
  <span class="dropdown-text">01 Probability Theory</span></a>
   </li>  
@@ -134,27 +162,32 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">10 Regression Discontinuity</span></a>
   </li>  
     </ul>
-  </li>
+</li>
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-navbar-tools ms-auto">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li>
+<a href="#assignment" id="toc-assignment" class="nav-link active" data-scroll-target="#assignment"><span class="header-section-number">1</span> Assignment</a>
+  <ul class="collapse">
+<li><a href="#check-the-relationships-between-the-variables-and-draw-a-dag-as-you-understand-the-relations." id="toc-check-the-relationships-between-the-variables-and-draw-a-dag-as-you-understand-the-relations." class="nav-link" data-scroll-target="#check-the-relationships-between-the-variables-and-draw-a-dag-as-you-understand-the-relations."><span class="header-section-number">1.1</span> Check the relationships between the variables and draw a DAG as you understand the relations.</a></li>
+  <li><a href="#compute-a-naive-estimate-of-the-average-treatment-effect." id="toc-compute-a-naive-estimate-of-the-average-treatment-effect." class="nav-link" data-scroll-target="#compute-a-naive-estimate-of-the-average-treatment-effect."><span class="header-section-number">1.2</span> Compute a naive estimate of the average treatment effect.</a></li>
+  <li><a href="#use-the-following-matching-methods-to-obtain-more-precise-estimates" id="toc-use-the-following-matching-methods-to-obtain-more-precise-estimates" class="nav-link" data-scroll-target="#use-the-following-matching-methods-to-obtain-more-precise-estimates"><span class="header-section-number">1.3</span> Use the following matching methods to obtain more precise estimates:</a></li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Matching and Subclassification</h1>
 </div>
 
@@ -165,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Oliver Mork </p>
+             <p>Pamela Oviedo </p>
           </div>
   </div>
     
@@ -174,26 +207,205 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
+</header><section id="assignment" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> Assignment</h1>
+<ul>
+<li>You are running an online store and one year ago, you introduced a plus membership to bind customers to your store and increase revenue. The plus memberships comes at a small cost for the customers, which is why not all of the customers subscribed. Now you want to examine whether binding customers by this membership program in fact increases your sales with subscribed customers. But of course, there are potentially confounding variables such as age, sex or pre_avg_purch (previous average purchases).</li>
+</ul>
+<section id="load-the-data.-then" class="level3"><h3 class="anchored" data-anchor-id="load-the-data.-then">Load the data. Then:</h3>
+</section><section id="check-the-relationships-between-the-variables-and-draw-a-dag-as-you-understand-the-relations." class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="check-the-relationships-between-the-variables-and-draw-a-dag-as-you-understand-the-relations.">
+<span class="header-section-number">1.1</span> Check the relationships between the variables and draw a DAG as you understand the relations.</h2>
+<ul>
+<li>C -&gt; card</li>
+<li>A -&gt; age</li>
+<li>S -&gt; sex</li>
+<li>PAP -&gt; Pre Average Purchase (pre_abg_purch)</li>
+<li>AP -&gt; Average Purchase (avg_purch)</li>
+</ul>
+<div class="cell" data-hash="07_matching_cache/html/unnamed-chunk-1_44f91221e2ea3fa095836a42b07ecc13">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(ggdag)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(MatchIt)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># Load the dataset</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>membership_data <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"D:/GitHub/cdsba-pamoviedo/Causal_Data_Science_Data/membership.rds"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Define DAG</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>dag_model <span class="ot">&lt;-</span> <span class="st">'dag {</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="st">bb="0,0,1,1"</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="st">AP [avgpur,pos="0.9,0.6"]</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="st">PAP [preavgpur,pos="0.6,0.4"]</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="st">C [card,pos="0.9,0.4"]</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="st">A [pos="0.7,0.6"]</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="st">S [pos="0.7,0.2"]</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="st">C-&gt; AP</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="st">PAP -&gt; C</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="st">A-&gt; C</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="st">S-&gt; C</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="st">A-&gt; PAP</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="st">S -&gt; PAP</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="st">}</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="st">'</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># draw DAG</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="fu">ggdag</span>(dag_model) <span class="sc">+</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>  <span class="fu">theme_dag</span>()<span class="sc">+</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>  <span class="fu">geom_dag_point</span>(<span class="at">color =</span> <span class="st">"pink"</span>) <span class="sc">+</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>  <span class="fu">geom_dag_text</span>(<span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>  <span class="fu">geom_dag_edges</span>(<span class="at">edge_color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="07_matching_files/figure-html/unnamed-chunk-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="07_matching_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="compute-a-naive-estimate-of-the-average-treatment-effect." class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="compute-a-naive-estimate-of-the-average-treatment-effect.">
+<span class="header-section-number">1.2</span> Compute a naive estimate of the average treatment effect.</h2>
+<div class="cell" data-hash="07_matching_cache/html/unnamed-chunk-2_9700fc2c64b47aab2eda68c72e4a27a6">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>lm_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(avg_purch <span class="sc">~</span>  card, <span class="at">data =</span> membership_data)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">summary</span>(lm_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = avg_purch ~ card, data = membership_data)
+#&gt; 
+#&gt; Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -101.515  -20.684   -0.199   20.424  120.166 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  65.9397     0.3965  166.29   &lt;2e-16 ***
+#&gt; card         25.2195     0.6095   41.38   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 30.11 on 9998 degrees of freedom
+#&gt; Multiple R-squared:  0.1462, Adjusted R-squared:  0.1461 
+#&gt; F-statistic:  1712 on 1 and 9998 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>coefficients <span class="ot">&lt;-</span> <span class="fu">coef</span>(lm_model)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">print</span>(coefficients)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; (Intercept)        card 
+#&gt;    65.93965    25.21950</code></pre>
+</div>
+</div>
+</section><section id="use-the-following-matching-methods-to-obtain-more-precise-estimates" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="use-the-following-matching-methods-to-obtain-more-precise-estimates">
+<span class="header-section-number">1.3</span> Use the following matching methods to obtain more precise estimates:</h2>
+<ol type="1">
+<li>(Coarsened) Exact Matching.</li>
+</ol>
+<div class="cell" data-hash="07_matching_cache/html/unnamed-chunk-3_20b5f9a290878303e8dd0853392d88f4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#CEM</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>cem <span class="ot">&lt;-</span> <span class="fu">matchit</span>(card <span class="sc">~</span> avg_purch <span class="sc">+</span> age <span class="sc">+</span> pre_avg_purch <span class="sc">+</span> sex,</span>
+<span id="cb6-3"><a href="#cb6-3"></a>               <span class="at">data =</span> membership_data, </span>
+<span id="cb6-4"><a href="#cb6-4"></a>               <span class="at">method =</span> <span class="st">'cem'</span>, </span>
+<span id="cb6-5"><a href="#cb6-5"></a>               <span class="at">estimand =</span> <span class="st">'ATE'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>df_cem <span class="ot">&lt;-</span> <span class="fu">match.data</span>(cem)</span>
+<span id="cb6-7"><a href="#cb6-7"></a>model_cem<span class="ot">&lt;-</span> <span class="fu">lm</span>(avg_purch <span class="sc">~</span> card, <span class="at">data =</span> df_cem, <span class="at">weights =</span> weights)</span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="fu">summary</span> (model_cem)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = avg_purch ~ card, data = df_cem, weights = weights)
+#&gt; 
+#&gt; Weighted Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -162.422  -19.058    0.153   18.795  147.646 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  75.9624     0.4051 187.526   &lt;2e-16 ***
+#&gt; card          0.9485     0.6212   1.527    0.127    
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 28.34 on 8515 degrees of freedom
+#&gt; Multiple R-squared:  0.0002737,  Adjusted R-squared:  0.0001563 
+#&gt; F-statistic: 2.332 on 1 and 8515 DF,  p-value: 0.1268</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Nearest-Neighbor Matching.</li>
+</ol>
+<div class="cell" data-hash="07_matching_cache/html/unnamed-chunk-4_ee775ddcbc0f54a5b54a0e03cf608c07">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#Nearest Neighbor</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>nn <span class="ot">&lt;-</span> <span class="fu">matchit</span>(card <span class="sc">~</span> avg_purch <span class="sc">+</span> pre_avg_purch <span class="sc">+</span> sex <span class="sc">+</span> age,</span>
+<span id="cb8-3"><a href="#cb8-3"></a>              <span class="at">data =</span> membership_data,</span>
+<span id="cb8-4"><a href="#cb8-4"></a>              <span class="at">method =</span> <span class="st">"nearest"</span>, <span class="co"># changed</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>              <span class="at">distance =</span> <span class="st">"mahalanobis"</span>, <span class="co"># changed</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>              <span class="at">replace =</span> T)</span>
+<span id="cb8-7"><a href="#cb8-7"></a>df_nn <span class="ot">&lt;-</span> <span class="fu">match.data</span>(nn)</span>
+<span id="cb8-8"><a href="#cb8-8"></a>nn_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(avg_purch <span class="sc">~</span> card, <span class="at">data =</span> df_nn, <span class="at">weights =</span> weights)</span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="fu">summary</span>(nn_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = avg_purch ~ card, data = df_nn, weights = weights)
+#&gt; 
+#&gt; Weighted Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -101.515  -22.370   -3.279   16.475  178.481 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  90.2268     0.6438 140.155   &lt;2e-16 ***
+#&gt; card          0.9324     0.7939   1.174     0.24    
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 30.22 on 6434 degrees of freedom
+#&gt; Multiple R-squared:  0.0002143,  Adjusted R-squared:  5.895e-05 
+#&gt; F-statistic: 1.379 on 1 and 6434 DF,  p-value: 0.2403</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Inverse Probability Weighting.</li>
+</ol>
+<div class="cell" data-hash="07_matching_cache/html/unnamed-chunk-5_821b9f0e260b3f392b819d4cc4eb7896">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Inverse Probability Weighting</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>model_prop <span class="ot">&lt;-</span> <span class="fu">glm</span>(card <span class="sc">~</span> avg_purch <span class="sc">+</span> sex <span class="sc">+</span> age <span class="sc">+</span> pre_avg_purch,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>                  <span class="at">data=</span>membership_data,</span>
+<span id="cb10-4"><a href="#cb10-4"></a>                  <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>))</span>
+<span id="cb10-5"><a href="#cb10-5"></a>df_aug <span class="ot">&lt;-</span> membership_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">propensity =</span> <span class="fu">predict</span>(model_prop, <span class="at">type =</span> <span class="st">"response"</span>))</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="co">#Extend data by IPW scores:</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>df_ipw <span class="ot">&lt;-</span> df_aug <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb10-9"><a href="#cb10-9"></a>  <span class="at">ipw =</span> (card<span class="sc">/</span>propensity) <span class="sc">+</span> ((<span class="dv">1</span><span class="sc">-</span>card) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>propensity)))</span>
+<span id="cb10-10"><a href="#cb10-10"></a></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="co">#Estimation</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a>model_ipw <span class="ot">&lt;-</span> <span class="fu">lm</span>(avg_purch <span class="sc">~</span> card,</span>
+<span id="cb10-13"><a href="#cb10-13"></a>                <span class="at">data =</span> df_ipw, </span>
+<span id="cb10-14"><a href="#cb10-14"></a>                <span class="at">weights =</span> ipw)</span>
+<span id="cb10-15"><a href="#cb10-15"></a><span class="fu">summary</span>(model_ipw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = avg_purch ~ card, data = df_ipw, weights = ipw)
+#&gt; 
+#&gt; Weighted Residuals:
+#&gt;     Min      1Q  Median      3Q     Max 
+#&gt; -525.64  -28.55   -0.11   30.04  441.02 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  76.5744     0.4664 164.189   &lt;2e-16 ***
+#&gt; card         -0.6361     0.6577  -0.967    0.333    
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 46.6 on 9998 degrees of freedom
+#&gt; Multiple R-squared:  9.356e-05,  Adjusted R-squared:  -6.45e-06 
+#&gt; F-statistic: 0.9355 on 1 and 9998 DF,  p-value: 0.3335</code></pre>
+</div>
+</div>
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
-</div>
-</div>
 
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -542,7 +754,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom"});</script>
 
 
 </body></html>

@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.450">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Oliver Mork">
-
+<meta name="author" content="Pamela Oviedo">
 <title>MyLabJournal - Regression and Statistical Inference</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,8 +18,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -42,8 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -62,17 +91,13 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
@@ -84,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -92,8 +117,8 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="../../content/01_journal/01_probability.html" rel="" target="">
  <span class="dropdown-text">01 Probability Theory</span></a>
   </li>  
@@ -134,27 +159,34 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">10 Regression Discontinuity</span></a>
   </li>  
     </ul>
-  </li>
+</li>
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-navbar-tools ms-auto">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li>
+<a href="#assignments" id="toc-assignments" class="nav-link active" data-scroll-target="#assignments"><span class="header-section-number">1</span> Assignments</a>
+  <ul class="collapse">
+<li><a href="#read-the-data-and-check-the-dimensions" id="toc-read-the-data-and-check-the-dimensions" class="nav-link" data-scroll-target="#read-the-data-and-check-the-dimensions"><span class="header-section-number">1.1</span> Read the data and check the dimensions</a></li>
+  <li><a href="#get-a-more-detailed-look-at-the-data" id="toc-get-a-more-detailed-look-at-the-data" class="nav-link" data-scroll-target="#get-a-more-detailed-look-at-the-data"><span class="header-section-number">1.2</span> Get a more detailed look at the data</a></li>
+  <li><a href="#run-a-linear-regression" id="toc-run-a-linear-regression" class="nav-link" data-scroll-target="#run-a-linear-regression"><span class="header-section-number">1.3</span> Run a linear regression</a></li>
+  <li><a href="#chose-one-regressor" id="toc-chose-one-regressor" class="nav-link" data-scroll-target="#chose-one-regressor"><span class="header-section-number">1.4</span> Chose one regressor</a></li>
+  <li><a href="#add-a-variable-seat_heating-assign-a-value-true-for-all-observations." id="toc-add-a-variable-seat_heating-assign-a-value-true-for-all-observations." class="nav-link" data-scroll-target="#add-a-variable-seat_heating-assign-a-value-true-for-all-observations."><span class="header-section-number">1.5</span> Add a variable seat_heating, assign a value TRUE for all observations.</a></li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Regression and Statistical Inference</h1>
 </div>
 
@@ -165,7 +197,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Oliver Mork </p>
+             <p>Pamela Oviedo </p>
           </div>
   </div>
     
@@ -174,26 +206,251 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
+</header><section id="assignments" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> Assignments</h1>
+<section id="read-the-data-and-check-the-dimensions" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="read-the-data-and-check-the-dimensions">
+<span class="header-section-number">1.1</span> Read the data and check the dimensions</h2>
+<div class="cell" data-hash="03_regression_cache/html/unnamed-chunk-1_7db5a39d3abf535b15c46720d64d9568">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>car <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"D:/GitHub/cdsba-pamoviedo/Causal_Data_Science_Data/car_prices.rds"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>dim_car <span class="ot">&lt;-</span> <span class="fu">dim</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>How many rows does the data have: 181<br>
+</li>
+<li>How many columns does the data have: 22</li>
+</ol></section><section id="get-a-more-detailed-look-at-the-data" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="get-a-more-detailed-look-at-the-data">
+<span class="header-section-number">1.2</span> Get a more detailed look at the data</h2>
+<section id="what-data-types-do-you-see" class="level3"><h3 class="anchored" data-anchor-id="what-data-types-do-you-see">What data types do you see?</h3>
+</section><section id="how-do-numbers-differ-from-strings-regarding-their-data-type" class="level3"><h3 class="anchored" data-anchor-id="how-do-numbers-differ-from-strings-regarding-their-data-type">How do numbers differ from strings regarding their data type?</h3>
+<div class="cell" data-hash="03_regression_cache/html/unnamed-chunk-2_897e7f73f4105a5f5c5055870c444743">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">glimpse</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Rows: 181
+#&gt; Columns: 22
+#&gt; $ aspiration       &lt;chr&gt; "std", "std", "std", "std", "std", "std", "std", "std…
+#&gt; $ doornumber       &lt;chr&gt; "two", "two", "two", "four", "four", "two", "four", "…
+#&gt; $ carbody          &lt;chr&gt; "convertible", "convertible", "hatchback", "sedan", "…
+#&gt; $ drivewheel       &lt;chr&gt; "rwd", "rwd", "rwd", "fwd", "4wd", "fwd", "fwd", "fwd…
+#&gt; $ enginelocation   &lt;chr&gt; "front", "front", "front", "front", "front", "front",…
+#&gt; $ wheelbase        &lt;dbl&gt; 88.6, 88.6, 94.5, 99.8, 99.4, 99.8, 105.8, 105.8, 105…
+#&gt; $ carlength        &lt;dbl&gt; 168.8, 168.8, 171.2, 176.6, 176.6, 177.3, 192.7, 192.…
+#&gt; $ carwidth         &lt;dbl&gt; 64.1, 64.1, 65.5, 66.2, 66.4, 66.3, 71.4, 71.4, 71.4,…
+#&gt; $ carheight        &lt;dbl&gt; 48.8, 48.8, 52.4, 54.3, 54.3, 53.1, 55.7, 55.7, 55.9,…
+#&gt; $ curbweight       &lt;dbl&gt; 2548, 2548, 2823, 2337, 2824, 2507, 2844, 2954, 3086,…
+#&gt; $ enginetype       &lt;chr&gt; "dohc", "dohc", "ohcv", "ohc", "ohc", "ohc", "ohc", "…
+#&gt; $ cylindernumber   &lt;chr&gt; "four", "four", "six", "four", "five", "five", "five"…
+#&gt; $ enginesize       &lt;dbl&gt; 130, 130, 152, 109, 136, 136, 136, 136, 131, 131, 108…
+#&gt; $ fuelsystem       &lt;chr&gt; "mpfi", "mpfi", "mpfi", "mpfi", "mpfi", "mpfi", "mpfi…
+#&gt; $ boreratio        &lt;dbl&gt; 3.47, 3.47, 2.68, 3.19, 3.19, 3.19, 3.19, 3.19, 3.13,…
+#&gt; $ stroke           &lt;dbl&gt; 2.68, 2.68, 3.47, 3.40, 3.40, 3.40, 3.40, 3.40, 3.40,…
+#&gt; $ compressionratio &lt;dbl&gt; 9.00, 9.00, 9.00, 10.00, 8.00, 8.50, 8.50, 8.50, 8.30…
+#&gt; $ horsepower       &lt;dbl&gt; 111, 111, 154, 102, 115, 110, 110, 110, 140, 160, 101…
+#&gt; $ peakrpm          &lt;dbl&gt; 5000, 5000, 5000, 5500, 5500, 5500, 5500, 5500, 5500,…
+#&gt; $ citympg          &lt;dbl&gt; 21, 21, 19, 24, 18, 19, 19, 19, 17, 16, 23, 23, 21, 2…
+#&gt; $ highwaympg       &lt;dbl&gt; 27, 27, 26, 30, 22, 25, 25, 25, 20, 22, 29, 29, 28, 2…
+#&gt; $ price            &lt;dbl&gt; 13495.00, 16500.00, 16500.00, 13950.00, 17450.00, 152…</code></pre>
+</div>
+</div>
+<p>Using the “glimpse()” command we got a more detailed look at the data which consists of numbers and characters. Numbers are represented as numeric values while strings are sequences of characters.</p>
+</section></section><section id="run-a-linear-regression" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="run-a-linear-regression">
+<span class="header-section-number">1.3</span> Run a linear regression</h2>
+<div class="cell" data-hash="03_regression_cache/html/unnamed-chunk-3_985d19524efcbaa5e88231cceb70f686">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>lm_all<span class="ot">&lt;-</span> <span class="fu">lm</span>(price<span class="sc">~</span>., <span class="at">data =</span> car)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">summary</span>(lm_all)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = price ~ ., data = car)
+#&gt; 
+#&gt; Residuals:
+#&gt;    Min     1Q Median     3Q    Max 
+#&gt;  -5662  -1120      0    798   9040 
+#&gt; 
+#&gt; Coefficients:
+#&gt;                        Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)          -36269.965  15460.866  -2.346 0.020354 *  
+#&gt; aspirationturbo        1846.206   1041.391   1.773 0.078386 .  
+#&gt; doornumbertwo           242.523    571.929   0.424 0.672172    
+#&gt; carbodyhardtop        -3691.743   1424.825  -2.591 0.010561 *  
+#&gt; carbodyhatchback      -3344.335   1238.359  -2.701 0.007757 ** 
+#&gt; carbodysedan          -2292.820   1356.014  -1.691 0.093043 .  
+#&gt; carbodywagon          -3427.921   1490.285  -2.300 0.022885 *  
+#&gt; drivewheelfwd          -504.564   1076.623  -0.469 0.640030    
+#&gt; drivewheelrwd           -15.446   1268.070  -0.012 0.990299    
+#&gt; enginelocationrear     6643.492   2572.275   2.583 0.010806 *  
+#&gt; wheelbase               -30.197     92.776  -0.325 0.745294    
+#&gt; carlength               -29.740     51.672  -0.576 0.565824    
+#&gt; carwidth                731.819    244.533   2.993 0.003258 ** 
+#&gt; carheight               123.195    134.607   0.915 0.361617    
+#&gt; curbweight                2.612      1.781   1.467 0.144706    
+#&gt; enginetypedohcv       -8541.957   4749.685  -1.798 0.074219 .  
+#&gt; enginetypel             978.748   1786.384   0.548 0.584619    
+#&gt; enginetypeohc          3345.252    933.001   3.585 0.000461 ***
+#&gt; enginetypeohcf          972.919   1625.631   0.598 0.550462    
+#&gt; enginetypeohcv        -6222.322   1236.415  -5.033 1.43e-06 ***
+#&gt; cylindernumberfive   -11724.540   3019.192  -3.883 0.000157 ***
+#&gt; cylindernumberfour   -11549.326   3177.177  -3.635 0.000387 ***
+#&gt; cylindernumbersix     -7151.398   2247.230  -3.182 0.001793 ** 
+#&gt; cylindernumberthree   -4318.929   4688.833  -0.921 0.358545    
+#&gt; cylindernumbertwelve -11122.209   4196.494  -2.650 0.008946 ** 
+#&gt; enginesize              125.934     26.541   4.745 5.00e-06 ***
+#&gt; fuelsystem2bbl          177.136    883.615   0.200 0.841400    
+#&gt; fuelsystemmfi         -3041.018   2576.996  -1.180 0.239934    
+#&gt; fuelsystemmpfi          359.278   1001.529   0.359 0.720326    
+#&gt; fuelsystemspdi        -2543.890   1363.546  -1.866 0.064140 .  
+#&gt; fuelsystemspfi          514.766   2499.229   0.206 0.837107    
+#&gt; boreratio             -1306.740   1642.221  -0.796 0.427516    
+#&gt; stroke                -4527.137    922.732  -4.906 2.49e-06 ***
+#&gt; compressionratio       -737.901    555.960  -1.327 0.186539    
+#&gt; horsepower               10.293     22.709   0.453 0.651035    
+#&gt; peakrpm                   2.526      0.634   3.983 0.000108 ***
+#&gt; citympg                 -90.352    166.647  -0.542 0.588538    
+#&gt; highwaympg              154.858    167.148   0.926 0.355761    
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 2189 on 143 degrees of freedom
+#&gt; Multiple R-squared:  0.9415, Adjusted R-squared:  0.9264 
+#&gt; F-statistic: 62.21 on 37 and 143 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Looking at the summary from the linear regression, those factors that have a *** next to the p value represent the significance, so we will take those as relevant for pricing a car. The factors are the following:</p>
+<ul>
+<li>Engine Type<br>
+</li>
+<li>Engine Size<br>
+</li>
+<li>Peak RPM<br>
+</li>
+<li>Stroke</li>
+</ul></section><section id="chose-one-regressor" class="level2" data-number="1.4"><h2 data-number="1.4" class="anchored" data-anchor-id="chose-one-regressor">
+<span class="header-section-number">1.4</span> Chose one regressor</h2>
+<div class="cell" data-hash="03_regression_cache/html/unnamed-chunk-4_765313a0e0aee733bd879ff461b6cdc9">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>lm_imp<span class="ot">&lt;-</span> <span class="fu">lm</span>(price<span class="sc">~</span>enginetype<span class="sc">+</span>enginesize<span class="sc">+</span>peakrpm<span class="sc">+</span>stroke, <span class="at">data=</span>car)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">summary</span>(lm_imp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = price ~ enginetype + enginesize + peakrpm + stroke, 
+#&gt;     data = car)
+#&gt; 
+#&gt; Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -14872.1  -1453.3   -410.3   1563.4  10058.4 
+#&gt; 
+#&gt; Coefficients:
+#&gt;                   Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)     -1.618e+04  4.220e+03  -3.834 0.000177 ***
+#&gt; enginetypedohcv  1.280e+03  3.135e+03   0.408 0.683638    
+#&gt; enginetypel      3.842e+03  1.480e+03   2.596 0.010256 *  
+#&gt; enginetypeohc    2.550e+03  9.641e+02   2.645 0.008925 ** 
+#&gt; enginetypeohcf   6.534e+02  1.283e+03   0.509 0.611213    
+#&gt; enginetypeohcv  -4.967e+03  1.284e+03  -3.870 0.000154 ***
+#&gt; enginesize       2.145e+02  7.630e+00  28.106  &lt; 2e-16 ***
+#&gt; peakrpm          3.400e+00  5.522e-01   6.158 5.05e-09 ***
+#&gt; stroke          -5.398e+03  9.088e+02  -5.939 1.55e-08 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 2971 on 172 degrees of freedom
+#&gt; Multiple R-squared:  0.8704, Adjusted R-squared:  0.8644 
+#&gt; F-statistic: 144.4 on 8 and 172 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>With the code above we can see that the most relevant factor out of all was “engine size” since it has the smallest P-value and its the regressor we will use.</p>
+<section id="explain-what-data-type-it-is-and-what-values-it-can-take-on" class="level3"><h3 class="anchored" data-anchor-id="explain-what-data-type-it-is-and-what-values-it-can-take-on">1. explain what data type it is and what values it can take on</h3>
+<div class="cell" data-hash="03_regression_cache/html/unnamed-chunk-5_1e4416794f8142f076bb6d4d7bc989dd">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">min</span>(car<span class="sc">$</span>enginesize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 61</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">max</span>(car<span class="sc">$</span>enginesize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 326</code></pre>
+</div>
+</div>
+<ul>
+<li>From the glimpse we know that the data type for “engine size” is a double.</li>
+<li>The values it can take on we use the min and max functions to know the range of the “engine size”. From 61-326.</li>
+</ul></section><section id="what-effect-it-has-on-the-price-and-what-changing-the-value-would-have-as-a-result" class="level3"><h3 class="anchored" data-anchor-id="what-effect-it-has-on-the-price-and-what-changing-the-value-would-have-as-a-result">2. what effect it has on the price and what changing the value would have as a result</h3>
+<ul>
+<li>Since engine size was the most significant factor, having the lowest p value, which means the price is dependent on it and changing the value would affect the price, when the engine size increases, the price will increase as well.</li>
+</ul></section><section id="whether-its-effect-is-statistically-significant" class="level3"><h3 class="anchored" data-anchor-id="whether-its-effect-is-statistically-significant">3. whether its effect is statistically significant</h3>
+<ul>
+<li>A low p value provides support for the claim that the alternative hypothesis is true, which means there is a significant correlation between the variables.</li>
+</ul></section></section><section id="add-a-variable-seat_heating-assign-a-value-true-for-all-observations." class="level2" data-number="1.5"><h2 data-number="1.5" class="anchored" data-anchor-id="add-a-variable-seat_heating-assign-a-value-true-for-all-observations.">
+<span class="header-section-number">1.5</span> Add a variable seat_heating, assign a value TRUE for all observations.</h2>
+<section id="assign-it-to-a-new-object-and-run-a-regression." class="level3"><h3 class="anchored" data-anchor-id="assign-it-to-a-new-object-and-run-a-regression.">Assign it to a new object and run a regression.</h3>
+<div class="cell" data-hash="03_regression_cache/html/unnamed-chunk-6_bb86367452bf98f0f18d607152f49e4f">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>ncar<span class="ot">&lt;-</span> car <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">seat_heating =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>lm_final <span class="ot">&lt;-</span> <span class="fu">lm</span>(price<span class="sc">~</span>., <span class="at">data=</span>ncar)</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">summary</span>(lm_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = price ~ ., data = ncar)
+#&gt; 
+#&gt; Residuals:
+#&gt;    Min     1Q Median     3Q    Max 
+#&gt;  -5662  -1120      0    798   9040 
+#&gt; 
+#&gt; Coefficients: (1 not defined because of singularities)
+#&gt;                        Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)          -36269.965  15460.866  -2.346 0.020354 *  
+#&gt; aspirationturbo        1846.206   1041.391   1.773 0.078386 .  
+#&gt; doornumbertwo           242.523    571.929   0.424 0.672172    
+#&gt; carbodyhardtop        -3691.743   1424.825  -2.591 0.010561 *  
+#&gt; carbodyhatchback      -3344.335   1238.359  -2.701 0.007757 ** 
+#&gt; carbodysedan          -2292.820   1356.014  -1.691 0.093043 .  
+#&gt; carbodywagon          -3427.921   1490.285  -2.300 0.022885 *  
+#&gt; drivewheelfwd          -504.564   1076.623  -0.469 0.640030    
+#&gt; drivewheelrwd           -15.446   1268.070  -0.012 0.990299    
+#&gt; enginelocationrear     6643.492   2572.275   2.583 0.010806 *  
+#&gt; wheelbase               -30.197     92.776  -0.325 0.745294    
+#&gt; carlength               -29.740     51.672  -0.576 0.565824    
+#&gt; carwidth                731.819    244.533   2.993 0.003258 ** 
+#&gt; carheight               123.195    134.607   0.915 0.361617    
+#&gt; curbweight                2.612      1.781   1.467 0.144706    
+#&gt; enginetypedohcv       -8541.957   4749.685  -1.798 0.074219 .  
+#&gt; enginetypel             978.748   1786.384   0.548 0.584619    
+#&gt; enginetypeohc          3345.252    933.001   3.585 0.000461 ***
+#&gt; enginetypeohcf          972.919   1625.631   0.598 0.550462    
+#&gt; enginetypeohcv        -6222.322   1236.415  -5.033 1.43e-06 ***
+#&gt; cylindernumberfive   -11724.540   3019.192  -3.883 0.000157 ***
+#&gt; cylindernumberfour   -11549.326   3177.177  -3.635 0.000387 ***
+#&gt; cylindernumbersix     -7151.398   2247.230  -3.182 0.001793 ** 
+#&gt; cylindernumberthree   -4318.929   4688.833  -0.921 0.358545    
+#&gt; cylindernumbertwelve -11122.209   4196.494  -2.650 0.008946 ** 
+#&gt; enginesize              125.934     26.541   4.745 5.00e-06 ***
+#&gt; fuelsystem2bbl          177.136    883.615   0.200 0.841400    
+#&gt; fuelsystemmfi         -3041.018   2576.996  -1.180 0.239934    
+#&gt; fuelsystemmpfi          359.278   1001.529   0.359 0.720326    
+#&gt; fuelsystemspdi        -2543.890   1363.546  -1.866 0.064140 .  
+#&gt; fuelsystemspfi          514.766   2499.229   0.206 0.837107    
+#&gt; boreratio             -1306.740   1642.221  -0.796 0.427516    
+#&gt; stroke                -4527.137    922.732  -4.906 2.49e-06 ***
+#&gt; compressionratio       -737.901    555.960  -1.327 0.186539    
+#&gt; horsepower               10.293     22.709   0.453 0.651035    
+#&gt; peakrpm                   2.526      0.634   3.983 0.000108 ***
+#&gt; citympg                 -90.352    166.647  -0.542 0.588538    
+#&gt; highwaympg              154.858    167.148   0.926 0.355761    
+#&gt; seat_heatingTRUE             NA         NA      NA       NA    
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 2189 on 143 degrees of freedom
+#&gt; Multiple R-squared:  0.9415, Adjusted R-squared:  0.9264 
+#&gt; F-statistic: 62.21 on 37 and 143 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section><section id="what-coefficient-do-you-get-for-the-new-variable-seat_heating-and-how-can-you-explain-it" class="level3"><h3 class="anchored" data-anchor-id="what-coefficient-do-you-get-for-the-new-variable-seat_heating-and-how-can-you-explain-it">What coefficient do you get for the new variable seat_heating and how can you explain it?</h3>
+<ul>
+<li>The coefficient for the new variable is NA since we are using logical variables when the other data sets are numeric values</li>
+</ul>
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
-</div>
-</div>
 
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

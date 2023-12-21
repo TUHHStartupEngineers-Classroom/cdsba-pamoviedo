@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.450">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Oliver Mork">
-
+<meta name="author" content="Pamela Oviedo">
 <title>MyLabJournal - Randomized Controlled Trials</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,8 +18,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -43,7 +73,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -62,17 +94,13 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
@@ -84,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -92,8 +120,8 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="../../content/01_journal/01_probability.html" rel="" target="">
  <span class="dropdown-text">01 Probability Theory</span></a>
   </li>  
@@ -134,27 +162,33 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">10 Regression Discontinuity</span></a>
   </li>  
     </ul>
-  </li>
+</li>
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-navbar-tools ms-auto">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li>
+<a href="#after-loading-the-data-perform-the-following-steps" id="toc-after-loading-the-data-perform-the-following-steps" class="nav-link active" data-scroll-target="#after-loading-the-data-perform-the-following-steps"><span class="header-section-number">1</span> After loading the data, perform the following steps:</a>
+  <ul class="collapse">
+<li><a href="#check-whether-the-covariates-are-balanced-across-the-groups.-use-a-plot-to-show-it." id="toc-check-whether-the-covariates-are-balanced-across-the-groups.-use-a-plot-to-show-it." class="nav-link" data-scroll-target="#check-whether-the-covariates-are-balanced-across-the-groups.-use-a-plot-to-show-it."><span class="header-section-number">1.1</span> Check whether the covariates are balanced across the groups. Use a plot to show it.</a></li>
+  <li><a href="#run-a-regression-to-find-the-effect-of-chatbot-on-sales." id="toc-run-a-regression-to-find-the-effect-of-chatbot-on-sales." class="nav-link" data-scroll-target="#run-a-regression-to-find-the-effect-of-chatbot-on-sales."><span class="header-section-number">1.2</span> Run a regression to find the effect of chatbot on sales.</a></li>
+  <li><a href="#find-subgroup-specific-effects-by-including-an-interaction.-compute-a-cate-for-one-exemplary-group.-a-subgroup-could-be-for-example-mobile-users." id="toc-find-subgroup-specific-effects-by-including-an-interaction.-compute-a-cate-for-one-exemplary-group.-a-subgroup-could-be-for-example-mobile-users." class="nav-link" data-scroll-target="#find-subgroup-specific-effects-by-including-an-interaction.-compute-a-cate-for-one-exemplary-group.-a-subgroup-could-be-for-example-mobile-users."><span class="header-section-number">1.3</span> Find subgroup-specific effects by including an interaction. Compute a CATE for one exemplary group. A subgroup could be for example mobile users.</a></li>
+  <li><a href="#its-not-only-of-interest-how-much-customers-buy-but-also-if-the-buy-at-all.-then-the-dependent-variable-is-binary-either-0-or-1-instead-of-continuous-and-the-model-of-choice-is-the-logistic-regression.-use-the-outcome-variable-purchase-and-run-a-logistic-regression.-the-coefficients-are-not-as-easily-interpretable-as-before.-look-it-up-and-interpret-the-coefficient-for-chatbot." id="toc-its-not-only-of-interest-how-much-customers-buy-but-also-if-the-buy-at-all.-then-the-dependent-variable-is-binary-either-0-or-1-instead-of-continuous-and-the-model-of-choice-is-the-logistic-regression.-use-the-outcome-variable-purchase-and-run-a-logistic-regression.-the-coefficients-are-not-as-easily-interpretable-as-before.-look-it-up-and-interpret-the-coefficient-for-chatbot." class="nav-link" data-scroll-target="#its-not-only-of-interest-how-much-customers-buy-but-also-if-the-buy-at-all.-then-the-dependent-variable-is-binary-either-0-or-1-instead-of-continuous-and-the-model-of-choice-is-the-logistic-regression.-use-the-outcome-variable-purchase-and-run-a-logistic-regression.-the-coefficients-are-not-as-easily-interpretable-as-before.-look-it-up-and-interpret-the-coefficient-for-chatbot."><span class="header-section-number">1.4</span> It’s not only of interest how much customers buy but also if the buy at all. Then, the dependent variable is binary (either 0 or 1) instead of continuous and the model of choice is the logistic regression. Use the outcome variable purchase and run a logistic regression. The coefficients are not as easily interpretable as before. Look it up and interpret the coefficient for chatbot.</a></li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Randomized Controlled Trials</h1>
 </div>
 
@@ -165,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Oliver Mork </p>
+             <p>Pamela Oviedo </p>
           </div>
   </div>
     
@@ -174,26 +208,201 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
+</header><section id="after-loading-the-data-perform-the-following-steps" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> After loading the data, perform the following steps:</h1>
+<section id="check-whether-the-covariates-are-balanced-across-the-groups.-use-a-plot-to-show-it." class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="check-whether-the-covariates-are-balanced-across-the-groups.-use-a-plot-to-show-it.">
+<span class="header-section-number">1.1</span> Check whether the covariates are balanced across the groups. Use a plot to show it.</h2>
+<div class="cell" data-hash="06_rct_cache/html/unnamed-chunk-1_f7e28b34186cc0c5df71d4d95a1760f0">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># Load the dataset</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>abtest_data <span class="ot">&lt;-</span>  <span class="fu">readRDS</span>(<span class="st">"D:/GitHub/cdsba-pamoviedo/Causal_Data_Science_Data/abtest_online.rds"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>lm_ate <span class="ot">&lt;-</span><span class="fu">lm</span>(purchase_amount <span class="sc">~</span> chatbot, <span class="at">data=</span> abtest_data)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">summary</span>(lm_ate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = purchase_amount ~ chatbot, data = abtest_data)
+#&gt; 
+#&gt; Residuals:
+#&gt;     Min      1Q  Median      3Q     Max 
+#&gt; -16.702 -14.478  -9.626  13.922  64.648 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  16.7017     0.8374  19.944  &lt; 2e-16 ***
+#&gt; chatbotTRUE  -7.0756     1.1796  -5.998 2.79e-09 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 18.65 on 998 degrees of freedom
+#&gt; Multiple R-squared:  0.0348, Adjusted R-squared:  0.03383 
+#&gt; F-statistic: 35.98 on 1 and 998 DF,  p-value: 2.787e-09</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>compare_prev <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(abtest_data,</span>
+<span id="cb3-2"><a href="#cb3-2"></a>                       <span class="fu">aes</span>(<span class="at">x=</span>chatbot,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>                           <span class="at">y=</span>previous_visit,</span>
+<span id="cb3-4"><a href="#cb3-4"></a>                           <span class="at">color =</span> <span class="fu">as.factor</span>(chatbot)))  <span class="sc">+</span> </span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
+<span id="cb3-6"><a href="#cb3-6"></a>               <span class="at">width =</span> .<span class="dv">5</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>               <span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
+<span id="cb3-8"><a href="#cb3-8"></a>               <span class="at">fun.args =</span> <span class="fu">list</span>(<span class="at">mult=</span><span class="fl">1.96</span>),</span>
+<span id="cb3-9"><a href="#cb3-9"></a>               <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Previous_visits"</span>, <span class="at">title =</span> <span class="st">"Difference in previous visits"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a></span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a>compare_mobile <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(abtest_data,</span>
+<span id="cb3-14"><a href="#cb3-14"></a>                         <span class="fu">aes</span>(<span class="at">x=</span>chatbot,</span>
+<span id="cb3-15"><a href="#cb3-15"></a>                             <span class="at">y=</span>mobile_device,</span>
+<span id="cb3-16"><a href="#cb3-16"></a>                             <span class="at">color =</span> <span class="fu">as.factor</span>(chatbot)))  <span class="sc">+</span> </span>
+<span id="cb3-17"><a href="#cb3-17"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
+<span id="cb3-18"><a href="#cb3-18"></a>               <span class="at">width =</span> .<span class="dv">5</span>,</span>
+<span id="cb3-19"><a href="#cb3-19"></a>               <span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
+<span id="cb3-20"><a href="#cb3-20"></a>               <span class="at">fun.args =</span> <span class="fu">list</span>(<span class="at">mult=</span><span class="fl">1.96</span>),</span>
+<span id="cb3-21"><a href="#cb3-21"></a>               <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Mobile decives"</span>, <span class="at">title =</span> <span class="st">"Difference in mobile devices"</span>)</span>
+<span id="cb3-23"><a href="#cb3-23"></a></span>
+<span id="cb3-24"><a href="#cb3-24"></a></span>
+<span id="cb3-25"><a href="#cb3-25"></a>compare_outcome <span class="ot">&lt;-</span>  <span class="fu">ggplot</span>(abtest_data, </span>
+<span id="cb3-26"><a href="#cb3-26"></a>                           <span class="fu">aes</span>(<span class="at">x =</span> chatbot, </span>
+<span id="cb3-27"><a href="#cb3-27"></a>                               <span class="at">y =</span> purchase_amount, </span>
+<span id="cb3-28"><a href="#cb3-28"></a>                               <span class="at">color =</span> <span class="fu">as.factor</span>(chatbot))) <span class="sc">+</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
+<span id="cb3-30"><a href="#cb3-30"></a>               <span class="at">width =</span> .<span class="dv">5</span>,</span>
+<span id="cb3-31"><a href="#cb3-31"></a>               <span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
+<span id="cb3-32"><a href="#cb3-32"></a>               <span class="at">fun.args =</span> <span class="fu">list</span>(<span class="at">mult=</span><span class="fl">1.96</span>),</span>
+<span id="cb3-33"><a href="#cb3-33"></a>               <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Purchase Amount"</span>, <span class="at">title =</span> <span class="st">"Difference in Purchase Amount"</span>)</span>
+<span id="cb3-35"><a href="#cb3-35"></a></span>
+<span id="cb3-36"><a href="#cb3-36"></a><span class="fu">plot</span>(compare_prev)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="06_rct_files/figure-html/unnamed-chunk-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="06_rct_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">plot</span> (compare_mobile) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="06_rct_files/figure-html/unnamed-chunk-1-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="06_rct_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">plot</span>(compare_outcome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="06_rct_files/figure-html/unnamed-chunk-1-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="06_rct_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Covariates are not balanced in the plots.</li>
+</ul></section><section id="run-a-regression-to-find-the-effect-of-chatbot-on-sales." class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="run-a-regression-to-find-the-effect-of-chatbot-on-sales.">
+<span class="header-section-number">1.2</span> Run a regression to find the effect of chatbot on sales.</h2>
+<div class="cell" data-hash="06_rct_cache/html/unnamed-chunk-2_62c61b4a15829247fb192fdc040b88a5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>lm_all <span class="ot">&lt;-</span> <span class="fu">lm</span>(purchase_amount<span class="sc">~</span>chatbot<span class="sc">+</span>previous_visit<span class="sc">+</span>mobile_device, <span class="at">data=</span>abtest_data)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">summary</span>(lm_all)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = purchase_amount ~ chatbot + previous_visit + mobile_device, 
+#&gt;     data = abtest_data)
+#&gt; 
+#&gt; Residuals:
+#&gt;     Min      1Q  Median      3Q     Max 
+#&gt; -25.414 -14.428  -8.435  12.559  64.584 
+#&gt; 
+#&gt; Coefficients:
+#&gt;                   Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)        15.2840     1.1227  13.614  &lt; 2e-16 ***
+#&gt; chatbotTRUE        -6.8488     1.1792  -5.808 8.49e-09 ***
+#&gt; previous_visit      0.7792     0.2869   2.716  0.00673 ** 
+#&gt; mobile_deviceTRUE  -0.8562     1.2642  -0.677  0.49841    
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 18.6 on 996 degrees of freedom
+#&gt; Multiple R-squared:  0.04243,    Adjusted R-squared:  0.03954 
+#&gt; F-statistic: 14.71 on 3 and 996 DF,  p-value: 2.228e-09</code></pre>
+</div>
+</div>
+<ul>
+<li>We can see that the chatbot coefficient is negative and it has a small p value which would suggest that the chatbot is associated with a statistically significant decrease in the average purchase. Customers with the chatbot tend to make smaller purchases compared to those with human interaction.</li>
+</ul></section><section id="find-subgroup-specific-effects-by-including-an-interaction.-compute-a-cate-for-one-exemplary-group.-a-subgroup-could-be-for-example-mobile-users." class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="find-subgroup-specific-effects-by-including-an-interaction.-compute-a-cate-for-one-exemplary-group.-a-subgroup-could-be-for-example-mobile-users.">
+<span class="header-section-number">1.3</span> Find subgroup-specific effects by including an interaction. Compute a CATE for one exemplary group. A subgroup could be for example mobile users.</h2>
+<div class="cell" data-hash="06_rct_cache/html/unnamed-chunk-3_25f15fecd25e6fb39fddb5dcad635164">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Include an interaction term</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>lm_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(purchase_amount <span class="sc">~</span> chatbot <span class="sc">*</span> mobile_device, <span class="at">data =</span> abtest_data)</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">summary</span>(lm_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = purchase_amount ~ chatbot * mobile_device, data = abtest_data)
+#&gt; 
+#&gt; Residuals:
+#&gt;    Min     1Q Median     3Q    Max 
+#&gt; -16.98 -14.54  -9.95  14.13  65.24 
+#&gt; 
+#&gt; Coefficients:
+#&gt;                               Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)                    16.9797     1.0152  16.725   &lt;2e-16 ***
+#&gt; chatbotTRUE                    -7.0301     1.4284  -4.922    1e-06 ***
+#&gt; mobile_deviceTRUE              -0.8727     1.7987  -0.485    0.628    
+#&gt; chatbotTRUE:mobile_deviceTRUE  -0.1526     2.5369  -0.060    0.952    
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 18.66 on 996 degrees of freedom
+#&gt; Multiple R-squared:  0.03534,    Adjusted R-squared:  0.03244 
+#&gt; F-statistic: 12.16 on 3 and 996 DF,  p-value: 8.034e-08</code></pre>
+</div>
+</div>
+<ul>
+<li>As we can see from the summary, both the estimate and p value show us that the interaction between chatbot and mobile users has no statistically significant effect on making a purchase.</li>
+</ul></section><section id="its-not-only-of-interest-how-much-customers-buy-but-also-if-the-buy-at-all.-then-the-dependent-variable-is-binary-either-0-or-1-instead-of-continuous-and-the-model-of-choice-is-the-logistic-regression.-use-the-outcome-variable-purchase-and-run-a-logistic-regression.-the-coefficients-are-not-as-easily-interpretable-as-before.-look-it-up-and-interpret-the-coefficient-for-chatbot." class="level2" data-number="1.4"><h2 data-number="1.4" class="anchored" data-anchor-id="its-not-only-of-interest-how-much-customers-buy-but-also-if-the-buy-at-all.-then-the-dependent-variable-is-binary-either-0-or-1-instead-of-continuous-and-the-model-of-choice-is-the-logistic-regression.-use-the-outcome-variable-purchase-and-run-a-logistic-regression.-the-coefficients-are-not-as-easily-interpretable-as-before.-look-it-up-and-interpret-the-coefficient-for-chatbot.">
+<span class="header-section-number">1.4</span> It’s not only of interest how much customers buy but also if the buy at all. Then, the dependent variable is binary (either 0 or 1) instead of continuous and the model of choice is the logistic regression. Use the outcome variable purchase and run a logistic regression. The coefficients are not as easily interpretable as before. Look it up and interpret the coefficient for chatbot.</h2>
+<div class="cell" data-hash="06_rct_cache/html/unnamed-chunk-4_5ce888453ed8e08f8357aa651a39285e">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#Logistic regression</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>logistic_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(purchase <span class="sc">~</span> chatbot <span class="sc">+</span> mobile_device <span class="sc">+</span> previous_visit, </span>
+<span id="cb10-3"><a href="#cb10-3"></a>                      <span class="at">data =</span> abtest_data, </span>
+<span id="cb10-4"><a href="#cb10-4"></a>                      <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">'logit'</span>))</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">summary</span>(logistic_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; glm(formula = purchase ~ chatbot + mobile_device + previous_visit, 
+#&gt;     family = binomial(link = "logit"), data = abtest_data)
+#&gt; 
+#&gt; Coefficients:
+#&gt;                   Estimate Std. Error z value Pr(&gt;|z|)    
+#&gt; (Intercept)       -0.22185    0.12347  -1.797  0.07237 .  
+#&gt; chatbotTRUE       -0.96894    0.13564  -7.144 9.09e-13 ***
+#&gt; mobile_deviceTRUE -0.07119    0.14530  -0.490  0.62417    
+#&gt; previous_visit     0.10606    0.03262   3.252  0.00115 ** 
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; (Dispersion parameter for binomial family taken to be 1)
+#&gt; 
+#&gt;     Null deviance: 1329.1  on 999  degrees of freedom
+#&gt; Residual deviance: 1262.2  on 996  degrees of freedom
+#&gt; AIC: 1270.2
+#&gt; 
+#&gt; Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Extract coefficient for chatbot</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>chatbot_coefficient <span class="ot">&lt;-</span> <span class="fu">coef</span>(logistic_model)[<span class="st">"chatbotTRUE"</span>]</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="co"># Calculate odds ratio</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>odds_ratio <span class="ot">&lt;-</span> <span class="fu">exp</span>(chatbot_coefficient)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>The coefficient for chatbot in the logistic model is -0.969 which means that for users that are exposed to the chatbot, the odds of making a purchase decrease by 0.969 units compared to those not exposed to it. If we exponentiate the coefficient will give us the odds ratio of 0.379 which tells us that the odds of making a purchase for users exposed to the chatbot are 0.379 times the odds for the users with human interaction.</li>
+</ul>
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
-</div>
-</div>
 
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -542,7 +751,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":true,"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom"});</script>
 
 
 </body></html>
