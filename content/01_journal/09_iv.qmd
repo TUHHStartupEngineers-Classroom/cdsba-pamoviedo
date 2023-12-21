@@ -2,6 +2,117 @@
 title: "Instrumental Variables"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+# Assignment 
+
+*  Imagine the following situation: you have developed an app and you are already having an active user base. Of course, some users are more active than other users. Also, users might use the app for different purposes. In general, user behavior likely depends on a lot of unobserved characteristics.
+*  Obviously, your goal is to keep users as long as possible on the app to maximize your ad revenues. To do that, you want to introduce a new feature and see how it affects time spent on the app. Simply comparing users who use the newly introduced feature to users who don’t would result in a biased estimate due to the unobserved confounders regarding their activity and willingness to use a new feature.
+*  Therefore, you perform a so called randomized encouragement trial, where for a random selection of users, a popup appears when opening the app and encourages these users to test new feature. The users who are not randomly selected don’t get a popup message but could also use the new feature.
+*  After a while you collect data on users’ activity and also if they were encouraged and if they used the new feature.
+
+### Load the data and do the following steps: 
+
+## Draw a DAG of how you understand the relationships.
+*  NF: New Feature
+*  PU: Pop Up
+*  UC: Unobserved Characteristics
+*  ST: Screen Time
+```{r}
+
+library(tidyverse)
+library(dagitty)
+library(ggdag)
+library(estimatr)
+
+#Load the data
+App <- readRDS("D:/GitHub/cdsba-pamoviedo/Causal_Data_Science_Data/rand_enc.rds")
+
+# Define DAG
+dag_model <- 'dag {
+bb="0,0,1,1"
+NF [avgpur,pos="0.7,0.4"]
+UC [preavgpur,pos="0.8,0.6"]
+ST [card,pos="0.9,0.4"]
+PU [pos="0.6,0.4"]
+
+UC-> NF
+UC -> ST
+NF -> ST
+NF -> PU
+
+
+}
+'
+# draw DAG
+ggdag(dag_model) +
+  theme_dag()+
+  geom_dag_point(color = "blue") +
+  geom_dag_text(color = "white") +
+  geom_dag_edges(edge_color = "green")
+```
+
+## Compute the naive, biased estimate.
+```{r}
+#Compute the naive, biased estimate
+lm_naive <- lm(time_spent ~ used_ftr, data = App)
+summary(lm_naive)
+```
+
+
+## For the assumptions that can be (partly) tested, check whether they are satisfied by either computing correlations or drawing plots. Argue whether instrumental variable estimation is an adequate procedure.
+
+```{r}
+#Correlation computation
+cor_matrix <- cor(App)
+print(cor_matrix)
+
+app_corr <- App %>%
+  filter(used_ftr == 1)
+cor(app_corr$rand_enc,app_corr$time_spent)
+
+#First Stage
+first_stage <- lm(used_ftr~time_spent, data = App)
+summary(first_stage)
+
+# Predicted 'probabilities' from first stage
+pred_fs <- predict(first_stage)
+
+# Create table with predictions and actual decisions
+pred_vs_actl <- tibble(
+  pred = pred_fs,
+  actl = App$used_ftr
+)
+
+# Plot predictions vs original
+ggplot(pred_vs_actl, aes(x = pred, y = actl, color = as.factor(actl))) +
+  geom_jitter(alpha = .5) +
+  scale_color_discrete(labels = c("Control Group", "Treatment Group")) +
+  theme(legend.title = element_blank())
+
+# Second stage
+second_stage <- lm(App$time_spent ~ first_stage$fitted.values)
+summary(second_stage)
+
+```
+
+*  IV estimation can provide more credible causal estimates if the 5-prerequisites (Stable unit treatment value assumption, Independence assumption, Exclusion restriction, Instrument relevance and Monotonicity assumption) are met. 
+
+## Compute the IV estimate using 2SLS and compare it to the naive estimate. Would you consider the naive estimate biased, and if yes, does it have an upward or downward bias?
+
+```{r}
+model_iv <- iv_robust(time_spent ~ used_ftr | rand_enc, data = App)
+summary(model_iv)
+```
+
+```{r}
+coefIV<- coef(model_iv)
+print(coefIV)
+coefNB<- coef(lm_naive)
+print(coefNB)
+```
+
+*  The naive estimate is biased if there are unobserved confounders influencing both the treatment assignment and the outcome. The instrumental variable estimate aims to address this bias by using an instrument that is correlated with the treatment but is not directly related to the outcome, except through its effect on the treatment.
+*  Comparing these estimates, it seems that the naive estimate is larger than the IV estimate. If the instrument is valid (i.e., it satisfies the necessary assumptions), the IV estimate is often considered less biased than the naive estimate. Therefore, it is possible that the naive estimate has an upward bias.
+
+
+
+

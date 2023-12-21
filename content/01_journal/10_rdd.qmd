@@ -2,6 +2,89 @@
 title: "Regression Discontinuity"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+# Assignment
+
+*  For the first assignment, use the data from the just discussed application (coupon.rds). When conducting a regression discontinuity design, one parameter that is chosen somehow arbitrarily is the bandwidth. Check how sensitive the result is to changing the bandwidth by running the analysis
+
+```{r}
+
+library(tidyverse)
+
+library(rddensity)
+
+coupon <- readRDS("D:/GitHub/cdsba-pamoviedo/Causal_Data_Science_Data/coupon.rds")
+
+#define cut-off
+c0 <- 60
+
+# Define bandwidths
+bw <- c0 + c(-5, 5) 
+bw_1 <- c0 + c(-2.5,2,5) # Half BW
+bw_2 <- c0 + c(-10,10)   # Double BW
+
+# Normal Bandwidth:
+# Subsets below and above threshold in specified bandwidth
+df_bw_below <- coupon %>% filter(days_since_last >= bw[1] & days_since_last < c0)
+df_bw_above <- coupon %>% filter(days_since_last >= c0 & days_since_last <= bw[2])
+
+df_bw <- bind_rows(df_bw_above, df_bw_below)
+
+lm_bw <- lm(purchase_after ~ days_since_last_centered + coupon, df_bw)
+summary(lm_bw)
+```
+
+
+###  With half the bandwidth
+
+```{r}
+# Case of Half the bandwidth
+df_bw_below_1 <- coupon %>% filter(days_since_last >= bw_1[1] & days_since_last < c0)
+df_bw_above_1 <- coupon %>% filter(days_since_last >= c0 & days_since_last <= bw_1[2])
+
+df_bw_1 <- bind_rows(df_bw_above_1, df_bw_below_1)
+
+lm_bw_1 <- lm(purchase_after ~ days_since_last_centered + coupon, df_bw_1)
+summary(lm_bw_1)
+```
+
+
+###  With double the bandwidth
+
+```{r}
+# Case of Double the bandwidth
+df_bw_below_2 <- coupon %>% filter(days_since_last >= bw_2[1] & days_since_last < c0)
+df_bw_above_2 <- coupon %>% filter(days_since_last >= c0 & days_since_last <= bw_2[2])
+
+df_bw_2 <- bind_rows(df_bw_above_2, df_bw_below_2)
+
+lm_bw_2 <- lm(purchase_after ~ days_since_last_centered + coupon, df_bw_2)
+summary(lm_bw_2)
+```
+
+
+*  Comparing the results from normal, half and double the band width we can see that changing the value from the normal to half the change in the estimate coefficients remain almost unchanged but when the band width is doubled we can see the change. It is important to choose the correct value according to what the ask is.
+
+#  
+*  Now consider a different past campaign. For a limited amount of time, for purchases with a total amount of more than 30€ you offered free shipping. The data can be seen in shipping.rds. Have a look at the variable purchase_amount and argue whether it could generally be used as a running variable with a cut-off at 30€.
+
+## Use a plot to confirm your argument.
+
+```{r}
+library(rddensity)
+library(tidyverse)
+
+Shipping <- readRDS("D:/GitHub/cdsba-pamoviedo/Causal_Data_Science_Data/shipping.rds")
+
+#Define cut-off
+co <- 30
+
+#Density Test
+rddd <- rddensity(Shipping$purchase_amount, c = co)
+summary(rddd)
+
+#Visual check
+rdd_plot <- rdplotdensity(rddd, Shipping$purchase_amount, plotN = 100)
+
+```
+
+*  P-value is 0 which would indicate there is a statistically significant difference at the cutoff. That supports the idea that purchases with amounts greater than 30€ have a different impact than those at or below 30€. (Since shipping is free for those orders above 30€). Taking this into consideration we can use purchase amount as a running variable. 

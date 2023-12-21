@@ -1,0 +1,32 @@
+library(gridExtra)
+# With 10 coordinates from out plot:
+
+cheese_consumption <- c(29.8, 30.1, 30.5, 30.6, 31.3, 31.7, 32.6, 33.1, 32.7, 32.8)
+bedsheet_deaths <- c(327, 456, 509, 497, 596, 573, 661, 741, 809, 717)
+
+# Create a data frame
+data <- data.frame(Year = seq(2000, 2009), Cheese = cheese_consumption, Bedsheets = bedsheet_deaths)
+
+# Load ggplot2 library
+library(ggplot2)
+
+# Create a plot for Cheese Consumption
+plot_cheese <- ggplot(data, aes(x = Year, y = Cheese)) +
+  geom_point(color = "blue") +
+  geom_line(color = "blue", linetype = "solid") +
+  labs(title = "Cheese Consumption Over Time",
+       x = "Year",
+       y = "Cheese Consumption")
+
+# Create a plot for Bedsheet Deaths
+plot_bedsheets <- ggplot(data, aes(x = Year, y = Bedsheets)) +
+  geom_point(color = "red") +
+  geom_line(color = "red", linetype = "dashed") +
+  labs(title = "Bedsheet Deaths Over Time",
+       x = "Year",
+       y = "Bedsheet Deaths")
+
+# Display the plots side by side
+gridExtra::grid.arrange(plot_cheese, plot_bedsheets, ncol = 2)
+
+

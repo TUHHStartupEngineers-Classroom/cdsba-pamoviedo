@@ -1,7 +1,93 @@
 ---
 title: "Randomized Controlled Trials"
 ---
+# After loading the data, perform the following steps:
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+## Check whether the covariates are balanced across the groups. Use a plot to show it.
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+
+# Load the dataset
+abtest_data <-  readRDS("D:/GitHub/cdsba-pamoviedo/Causal_Data_Science_Data/abtest_online.rds")
+lm_ate <-lm(purchase_amount ~ chatbot, data= abtest_data)
+summary(lm_ate)
+
+compare_prev <- ggplot(abtest_data,
+                       aes(x=chatbot,
+                           y=previous_visit,
+                           color = as.factor(chatbot)))  + 
+  stat_summary(geom = "errorbar", 
+               width = .5,
+               fun.data = "mean_se", 
+               fun.args = list(mult=1.96),
+               show.legend = F) +
+  labs(x = NULL, y = "Previous_visits", title = "Difference in previous visits")
+
+
+compare_mobile <- ggplot(abtest_data,
+                         aes(x=chatbot,
+                             y=mobile_device,
+                             color = as.factor(chatbot)))  + 
+  stat_summary(geom = "errorbar", 
+               width = .5,
+               fun.data = "mean_se", 
+               fun.args = list(mult=1.96),
+               show.legend = F) +
+  labs(x = NULL, y = "Mobile decives", title = "Difference in mobile devices")
+
+
+compare_outcome <-  ggplot(abtest_data, 
+                           aes(x = chatbot, 
+                               y = purchase_amount, 
+                               color = as.factor(chatbot))) +
+  stat_summary(geom = "errorbar", 
+               width = .5,
+               fun.data = "mean_se", 
+               fun.args = list(mult=1.96),
+               show.legend = F) +
+  labs(x = NULL, y = "Purchase Amount", title = "Difference in Purchase Amount")
+
+plot(compare_prev)
+plot (compare_mobile) 
+plot(compare_outcome)
+```
+
+*  Covariates are not balanced in the plots. 
+
+## Run a regression to find the effect of chatbot on sales.
+```{r}
+
+lm_all <- lm(purchase_amount~chatbot+previous_visit+mobile_device, data=abtest_data)
+summary(lm_all)
+```
+
+*  We can see that the chatbot coefficient is negative and it has a small p value which would suggest that the chatbot is associated with a statistically significant decrease in the average purchase. Customers with the chatbot tend to make smaller purchases compared to those with human interaction. 
+
+## Find subgroup-specific effects by including an interaction. Compute a CATE for one exemplary group. A subgroup could be for example mobile users.
+
+```{r}
+# Include an interaction term
+lm_model <- lm(purchase_amount ~ chatbot * mobile_device, data = abtest_data)
+summary(lm_model)
+```
+
+*  As we can see from the summary, both the estimate and p value show us that the interaction between chatbot and mobile users has no statistically significant effect on making a purchase. 
+
+
+## It’s not only of interest how much customers buy but also if the buy at all. Then, the dependent variable is binary (either 0 or 1) instead of continuous and the model of choice is the logistic regression. Use the outcome variable purchase and run a logistic regression. The coefficients are not as easily interpretable as before. Look it up and interpret the coefficient for chatbot.
+```{r}
+#Logistic regression
+logistic_model <- glm(purchase ~ chatbot + mobile_device + previous_visit, 
+                      data = abtest_data, 
+                      family = binomial(link = 'logit'))
+summary(logistic_model)
+
+# Extract coefficient for chatbot
+chatbot_coefficient <- coef(logistic_model)["chatbotTRUE"]
+# Calculate odds ratio
+odds_ratio <- exp(chatbot_coefficient)
+```
+
+*  The coefficient for chatbot in the logistic model is -0.969 which means that for users that are exposed to the chatbot, the odds of making a purchase decrease by 0.969 units compared to those not exposed to it. If we exponentiate the coefficient will give us the odds ratio of 0.379 which tells us that the odds of making a purchase for users exposed to the chatbot are 0.379 times the odds for the users with human interaction.  

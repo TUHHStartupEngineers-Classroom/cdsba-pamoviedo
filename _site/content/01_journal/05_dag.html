@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.450">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Oliver Mork">
-
+<meta name="author" content="Pamela Oviedo">
 <title>MyLabJournal - Directed Acyclic Graphs</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,8 +18,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -43,7 +73,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -62,17 +94,13 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
@@ -84,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -92,8 +120,8 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="../../content/01_journal/01_probability.html" rel="" target="">
  <span class="dropdown-text">01 Probability Theory</span></a>
   </li>  
@@ -134,27 +162,33 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">10 Regression Discontinuity</span></a>
   </li>  
     </ul>
-  </li>
+</li>
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-navbar-tools ms-auto">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li>
+<a href="#assignment" id="toc-assignment" class="nav-link active" data-scroll-target="#assignment"><span class="header-section-number">1</span> Assignment</a>
+  <ul class="collapse">
+<li><a href="#draw-the-dag-from-the-example-in-the-previous-chapter" id="toc-draw-the-dag-from-the-example-in-the-previous-chapter" class="nav-link" data-scroll-target="#draw-the-dag-from-the-example-in-the-previous-chapter"><span class="header-section-number">1.1</span> Draw the DAG from the example in the previous chapter</a></li>
+  <li><a href="#perform-the-following-steps" id="toc-perform-the-following-steps" class="nav-link" data-scroll-target="#perform-the-following-steps"><span class="header-section-number">1.2</span> Perform the following steps:</a></li>
+  <li><a href="#compare-the-coefficients-and-find-a-possible-explanation" id="toc-compare-the-coefficients-and-find-a-possible-explanation" class="nav-link" data-scroll-target="#compare-the-coefficients-and-find-a-possible-explanation"><span class="header-section-number">1.3</span> Compare the coefficients and find a possible explanation</a></li>
+  <li><a href="#plot-the-data" id="toc-plot-the-data" class="nav-link" data-scroll-target="#plot-the-data"><span class="header-section-number">1.4</span> Plot the data</a></li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Directed Acyclic Graphs</h1>
 </div>
 
@@ -165,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Oliver Mork </p>
+             <p>Pamela Oviedo </p>
           </div>
   </div>
     
@@ -174,26 +208,193 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
+</header><section id="assignment" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> Assignment</h1>
+<section id="draw-the-dag-from-the-example-in-the-previous-chapter" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="draw-the-dag-from-the-example-in-the-previous-chapter">
+<span class="header-section-number">1.1</span> Draw the DAG from the example in the previous chapter</h2>
+<ul>
+<li>Imagine you are a business owner of four stores and you want to investigate if there is a benefit of having own parking spots in front of your store. And if there is a benefit, you would also like to know what size it has.</li>
+<li>At stores A and B, which are located in the city center, you don’t have any parking spots but at stores. C and D, located outside the city you do. Except for location and parking spots, the stores are very similar, i.e.&nbsp;they sell exactly the same goods, have the same size etc.</li>
+</ul>
+<p>Variables:</p>
+<ul>
+<li>L-&gt; Location<br>
+</li>
+<li>P-&gt; Parking Spots<br>
+</li>
+<li>A-&gt; Store A</li>
+<li>B-&gt; Store B</li>
+<li>C-&gt; Store C</li>
+<li>D-&gt; Store D</li>
+<li>S-&gt; Sales</li>
+</ul>
+<div class="cell" data-hash="05_dag_cache/html/unnamed-chunk-1_f70459c9863b65fa9bc46afe6a605741">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(ggdag)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># create DAG from dagitty</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>dag_model <span class="ot">&lt;-</span> <span class="st">'dag {</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="st">bb="0,0,1,1"</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="st">L [location,pos="0.9,0.6"]</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="st">P [exposure,pos="0.575,0.4"]</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="st">S [outcome,pos="0.9,0.4"]</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="st">D [pos="0.7,0.2"]</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="st">C [pos="0.7,0.3"]</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="st">B [pos="0.7,0.5"]</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="st">A [pos="0.7,0.6"]</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="st">L-&gt; S</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="st">P -&gt; B</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="st">P-&gt; A</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="st">P-&gt; C</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="st">P-&gt; D</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="st">A -&gt; S</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="st">B -&gt; S</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="st">C -&gt; S</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="st">D -&gt; S</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="st">}</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="st">'</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="co"># draw DAG</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="fu">ggdag</span>(dag_model) <span class="sc">+</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>  <span class="fu">theme_dag</span>()<span class="sc">+</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>  <span class="fu">geom_dag_point</span>(<span class="at">color =</span> <span class="st">"pink"</span>) <span class="sc">+</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>  <span class="fu">geom_dag_text</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>    <span class="fu">geom_dag_edges</span>(<span class="at">edge_color =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="05_dag_files/figure-html/unnamed-chunk-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="05_dag_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="perform-the-following-steps" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="perform-the-following-steps">
+<span class="header-section-number">1.2</span> Perform the following steps:</h2>
+<ul>
+<li>A company sells a SaaS (Software as a service) to business clients that chose to subscribe to one of the three subscription levels, Starter, Premium or Elite, which provide different features at different price points (more storage and other capabilities). Starter has the least functionality, while Elite includes the most features.<br>
+</li>
+<li>Now imagine, you are working as an analyst for that company and are asked to examine the relationship between follow-up calls to the clients and their satisfaction with the product and service. Follow-up calls are voluntary and are just to help the client with possible problems and so on. Satisfaction is measured on a weekly basis by surveying the clients.</li>
+</ul>
+<section id="regress-satisfaction-on-follow_ups" class="level3"><h3 class="anchored" data-anchor-id="regress-satisfaction-on-follow_ups">1. Regress satisfaction on follow_ups</h3>
+</section><section id="regress-satisfaction-on-follow_ups-and-account-for-subscription" class="level3"><h3 class="anchored" data-anchor-id="regress-satisfaction-on-follow_ups-and-account-for-subscription">2. Regress satisfaction on follow_ups and account for subscription</h3>
+<div class="cell" data-hash="05_dag_cache/html/unnamed-chunk-2_3859946ee03e552ba4245cec5982ada9">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="at">follow_ups =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="at">satisfaction =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">45</span>, <span class="dv">47</span>, <span class="dv">44</span>, <span class="dv">50</span>, <span class="dv">55</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">59</span>, <span class="dv">65</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="dv">77</span>, <span class="dv">74</span>, <span class="dv">80</span>),</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="at">subscription =</span> <span class="fu">c</span>(<span class="st">"Elite"</span>, <span class="st">"Elite"</span>, <span class="st">"Elite"</span>, <span class="st">"Elite"</span>, <span class="st">"Elite"</span>, <span class="st">"Premium+"</span>, <span class="st">"Premium+"</span>, <span class="st">"Premium+"</span>, <span class="st">"Premium+"</span>, <span class="st">"Premium+"</span>, <span class="st">"Premium"</span>, <span class="st">"Premium"</span>, <span class="st">"Premium"</span>, <span class="st">"Premium"</span>, <span class="st">"Premium"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># Regress satisfaction on follow_ups</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>model_follow_ups <span class="ot">&lt;-</span> <span class="fu">lm</span>(satisfaction <span class="sc">~</span> follow_ups, <span class="at">data =</span> df)</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="fu">summary</span>(model_follow_ups)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = satisfaction ~ follow_ups, data = df)
+#&gt; 
+#&gt; Residuals:
+#&gt;     Min      1Q  Median      3Q     Max 
+#&gt; -12.412  -5.257   1.733   4.506  12.588 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  78.8860     4.2717  18.467 1.04e-10 ***
+#&gt; follow_ups   -3.3093     0.6618  -5.001 0.000243 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 7.923 on 13 degrees of freedom
+#&gt; Multiple R-squared:  0.658,  Adjusted R-squared:  0.6316 
+#&gt; F-statistic: 25.01 on 1 and 13 DF,  p-value: 0.0002427</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">summary</span>(model_follow_ups)<span class="sc">$</span>coefficients[<span class="st">"follow_ups"</span>, <span class="st">"Pr(&gt;|t|)"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 0.0002426524</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Regress satisfaction on follow_ups and account for subscription</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>model_subscription <span class="ot">&lt;-</span> <span class="fu">lm</span>(satisfaction <span class="sc">~</span> follow_ups <span class="sc">+</span> subscription, <span class="at">data =</span> df)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">summary</span>(model_subscription)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = satisfaction ~ follow_ups + subscription, data = df)
+#&gt; 
+#&gt; Residuals:
+#&gt;     Min      1Q  Median      3Q     Max 
+#&gt; -4.3222 -2.1972  0.3167  2.2667  3.9944 
+#&gt; 
+#&gt; Coefficients:
+#&gt;                      Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)           26.7667     6.6804   4.007  0.00206 ** 
+#&gt; follow_ups             2.1944     0.7795   2.815  0.01682 *  
+#&gt; subscriptionPremium   44.7222     5.6213   7.956 6.88e-06 ***
+#&gt; subscriptionPremium+  18.0722     2.1659   8.344 4.37e-06 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 2.958 on 11 degrees of freedom
+#&gt; Multiple R-squared:  0.9597, Adjusted R-squared:  0.9487 
+#&gt; F-statistic: 87.21 on 3 and 11 DF,  p-value: 5.956e-08</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">summary</span>(model_subscription)<span class="sc">$</span>coefficients[<span class="st">"follow_ups"</span>, <span class="st">"Pr(&gt;|t|)"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 0.0168153</code></pre>
+</div>
+</div>
+</section></section><section id="compare-the-coefficients-and-find-a-possible-explanation" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="compare-the-coefficients-and-find-a-possible-explanation">
+<span class="header-section-number">1.3</span> Compare the coefficients and find a possible explanation</h2>
+<ul>
+<li>The coefficient for the satisfaction on follow ups is -3.3093</li>
+<li>The coefficient for the satisfaction on follow ups and account for subscription is 2.1944<br>
+</li>
+<li>When follow ups are being done, the level of satisfaction on those is low which is why the coefficient is negative.</li>
+<li>When you factor in the subscription the level of satisfaction increases which is why the coefficient is positive.</li>
+<li>Since the follow ups are to help the client with possible problems, when they are following up maybe the problems are not solved and the satisfaction of the call would be low. When people have subscriptions their problems might be easier to solve and therefore the overall satisfaction would increase.</li>
+</ul></section><section id="plot-the-data" class="level2" data-number="1.4"><h2 data-number="1.4" class="anchored" data-anchor-id="plot-the-data">
+<span class="header-section-number">1.4</span> Plot the data</h2>
+<div class="cell" data-hash="05_dag_cache/html/unnamed-chunk-3_aa6ccd7104fffd906c377fb0458326fa">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co"># Scatter plot with regression line for satisfaction ~ follow_ups</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>plot_follow_ups <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> follow_ups, <span class="at">y =</span> satisfaction)) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Satisfaction vs. Follow-ups"</span>,</span>
+<span id="cb10-8"><a href="#cb10-8"></a>       <span class="at">x =</span> <span class="st">"Follow-ups"</span>,</span>
+<span id="cb10-9"><a href="#cb10-9"></a>       <span class="at">y =</span> <span class="st">"Satisfaction"</span>)</span>
+<span id="cb10-10"><a href="#cb10-10"></a></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="co"># Scatter plot with regression line for satisfaction ~ follow_ups + subscription</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a>plot_subscription <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> follow_ups, <span class="at">y =</span> satisfaction, <span class="at">color =</span> subscription)) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb10-15"><a href="#cb10-15"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Satisfaction vs. Follow-ups by Subscription"</span>,</span>
+<span id="cb10-16"><a href="#cb10-16"></a>       <span class="at">x =</span> <span class="st">"Follow-ups"</span>,</span>
+<span id="cb10-17"><a href="#cb10-17"></a>       <span class="at">y =</span> <span class="st">"Satisfaction"</span>,</span>
+<span id="cb10-18"><a href="#cb10-18"></a>       <span class="at">color =</span> <span class="st">"Subscription"</span>)</span>
+<span id="cb10-19"><a href="#cb10-19"></a></span>
+<span id="cb10-20"><a href="#cb10-20"></a><span class="co"># Display the plots</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a><span class="fu">print</span>(plot_follow_ups)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="05_dag_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="05_dag_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">print</span>(plot_subscription)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="05_dag_files/figure-html/unnamed-chunk-3-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="05_dag_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
-</div>
-</div>
 
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -542,7 +743,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true});</script>
 
 
 </body></html>

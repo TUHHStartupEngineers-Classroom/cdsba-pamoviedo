@@ -2,6 +2,110 @@
 title: "Directed Acyclic Graphs"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+# Assignment  
+## Draw the DAG from the example in the previous chapter 
+*  Imagine you are a business owner of four stores and you want to investigate if there is a benefit of having own parking spots in front of your store. And if there is a benefit, you would also like to know what size it has.
+*  At stores A and B, which are located in the city center, you don’t have any parking spots but at stores. C and D, located outside the city you do. Except for location and parking spots, the stores are very similar, i.e. they sell exactly the same goods, have the same size etc. 
+
+Variables: 
+
+*  L-> Location  
+*  P-> Parking Spots  
+*  A-> Store A
+*  B-> Store B
+*  C-> Store C
+*  D-> Store D
+*  S-> Sales
+
+```{r}
+
+library(dagitty)
+library(ggdag)
+
+# create DAG from dagitty
+dag_model <- 'dag {
+bb="0,0,1,1"
+L [location,pos="0.9,0.6"]
+P [exposure,pos="0.575,0.4"]
+S [outcome,pos="0.9,0.4"]
+D [pos="0.7,0.2"]
+C [pos="0.7,0.3"]
+B [pos="0.7,0.5"]
+A [pos="0.7,0.6"]
+L-> S
+P -> B
+P-> A
+P-> C
+P-> D
+A -> S
+B -> S
+C -> S
+D -> S
+}
+'
+# draw DAG
+ggdag(dag_model) +
+  theme_dag()+
+  geom_dag_point(color = "pink") +
+  geom_dag_text(color = "black") +
+    geom_dag_edges(edge_color = "blue")
+```
+
+## Perform the following steps:  
+*  A company sells a SaaS (Software as a service) to business clients that chose to subscribe to one of the three subscription levels, Starter, Premium or Elite, which provide different features at different price points (more storage and other capabilities). Starter has the least functionality, while Elite includes the most features.  
+*  Now imagine, you are working as an analyst for that company and are asked to examine the relationship between follow-up calls to the clients and their satisfaction with the product and service. Follow-up calls are voluntary and are just to help the client with possible problems and so on. Satisfaction is measured on a weekly basis by surveying the clients.
+
+### 1. Regress satisfaction on follow_ups  
+### 2. Regress satisfaction on follow_ups and account for subscription  
+
+```{r}
+df <- data.frame(
+  follow_ups = c(8, 7, 8, 9, 10, 6, 7, 6, 8, 8, 0, 1, 2, 2, 3),
+  satisfaction = c(40, 45, 47, 44, 50, 55, 60, 62, 59, 65, 70, 74, 77, 74, 80),
+  subscription = c("Elite", "Elite", "Elite", "Elite", "Elite", "Premium+", "Premium+", "Premium+", "Premium+", "Premium+", "Premium", "Premium", "Premium", "Premium", "Premium")
+)
+
+# Regress satisfaction on follow_ups
+model_follow_ups <- lm(satisfaction ~ follow_ups, data = df)
+summary(model_follow_ups)
+summary(model_follow_ups)$coefficients["follow_ups", "Pr(>|t|)"]
+
+# Regress satisfaction on follow_ups and account for subscription
+model_subscription <- lm(satisfaction ~ follow_ups + subscription, data = df)
+summary(model_subscription)
+summary(model_subscription)$coefficients["follow_ups", "Pr(>|t|)"]
+```
+## Compare the coefficients and find a possible explanation
+
+*  The coefficient for the satisfaction on follow ups is -3.3093
+*  The coefficient for the satisfaction on follow ups and account for subscription is 2.1944  
+*  When follow ups are being done, the level of satisfaction on those is low which is why the coefficient is negative. 
+*  When you factor in the subscription the level of satisfaction increases which is why the coefficient is positive.
+*  Since the follow ups are to help the client with possible problems, when they are following up maybe the problems are not solved and the satisfaction of the call would be low. When people have subscriptions their problems might be easier to solve and therefore the overall satisfaction would increase.
+
+## Plot the data
+```{r}
+
+library(ggplot2)
+
+# Scatter plot with regression line for satisfaction ~ follow_ups
+plot_follow_ups <- ggplot(df, aes(x = follow_ups, y = satisfaction)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  labs(title = "Satisfaction vs. Follow-ups",
+       x = "Follow-ups",
+       y = "Satisfaction")
+
+# Scatter plot with regression line for satisfaction ~ follow_ups + subscription
+plot_subscription <- ggplot(df, aes(x = follow_ups, y = satisfaction, color = subscription)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Satisfaction vs. Follow-ups by Subscription",
+       x = "Follow-ups",
+       y = "Satisfaction",
+       color = "Subscription")
+
+# Display the plots
+print(plot_follow_ups)
+print(plot_subscription)
+```

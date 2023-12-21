@@ -1,7 +1,77 @@
 ---
 title: "Regression and Statistical Inference"
 ---
+# Assignments  
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+## Read the data and check the dimensions
+
+```{r}
+
+library(tidyverse)
+car <- readRDS("D:/GitHub/cdsba-pamoviedo/Causal_Data_Science_Data/car_prices.rds")
+dim_car <- dim(car)
+
+``` 
+
+1.  How many rows does the data have: 181  
+2.  How many columns does the data have: 22  
+
+## Get a more detailed look at the data
+### What data types do you see? 
+### How do numbers differ from strings regarding their data type?  
+
+ 
+```{r}
+glimpse(car)
+```
+ 
+Using the "glimpse()" command we got a more detailed look at the data which consists of numbers and characters.
+Numbers are represented as numeric values while strings are sequences of characters.
+
+## Run a linear regression  
+```{r}
+lm_all<- lm(price~., data = car)
+summary(lm_all)
+```
+Looking at the summary from the linear regression, those factors that have a *** next to the p value represent the significance, so we will take those as relevant for pricing a car. 
+The factors are the following: 
+
+*  Engine Type  
+*  Engine Size  
+*  Peak RPM  
+*  Stroke
+
+
+## Chose one regressor 
+
+```{r}
+lm_imp<- lm(price~enginetype+enginesize+peakrpm+stroke, data=car)
+summary(lm_imp)
+```
+With the code above we can see that the most relevant factor out of all was "engine size" since it has the smallest P-value and its the regressor we will use.
+
+### 1. explain what data type it is and what values it can take on  
+
+```{r}
+min(car$enginesize)
+max(car$enginesize)
+```
+
+*  From the glimpse we know that the data type for "engine size" is a double. 
+*  The values it can take on we use the min and max functions to know the range of the "engine size". From 61-326. 
+
+### 2. what effect it has on the price and what changing the value would have as a result  
+*  Since engine size was the most significant factor, having the lowest p value, which means the price is dependent on it and changing the value would affect the price, when the engine size increases, the price will increase as well. 
+
+### 3. whether its effect is statistically significant
+*  A low p value provides support for the claim that the alternative hypothesis is true, which means there is a significant correlation between the variables.  
+
+## Add a variable seat_heating, assign a value TRUE for all observations.   
+### Assign it to a new object and run a regression.  
+```{r}
+ncar<- car %>% mutate(seat_heating = TRUE)
+lm_final <- lm(price~., data=ncar)
+summary(lm_final)
+```
+### What coefficient do you get for the new variable seat_heating and how can you explain it? 
+*  The coefficient for the new variable is NA since we are using logical variables when the other data sets are numeric values
